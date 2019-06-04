@@ -16,11 +16,11 @@
             border-radius: 10px;
         }
 
-        #topic>h1 {
+        #header>h1 {
             margin: 65px 0 0 50px;
         }
 
-        #topic>p {
+        #header>p {
             margin: 0 0 40px 50px;
         }
 
@@ -38,16 +38,15 @@
             float: right;
         }
 
-        #ser {
+        input[type=search] {
             width: 150px;
             height: 25px;
-            border: 1px solid #ecf0f1;
+            border: 1px solid #bdc3c7;
             border-radius: 10px 0px 0px 10px;
             margin-right: -10px;
-            box-shadow: block;
         }
 
-        #btn {
+        input[type=submit] {
             width: 30px;
             height: 27px;
             border-radius: 0 10px 10px 0;
@@ -84,7 +83,7 @@
 
         aside {
             float: right;
-            margin-right: 150px;
+            margin: 30px 150px 0 0;
         }
 
         #cate {
@@ -100,19 +99,20 @@
             margin-left: 17px;
             color: #0652DD;
         }
+
     </style>
 </head>
 
 <body>
     <div>
-        <div id="topic">
+        <div id="header">
             <h1>HTML5 Example Preview</h1>
             <p>비트캠프 종로</p>
         </div>
         <hr class="al">
         <div id="search">
-            <input type="search" id="ser">
-            <input type="submit" id="btn" value="검색">
+            <input type="search">
+            <input type="submit" value="검색">
         </div>
         <ul id="nav">
             <li>HTML5</li>
@@ -123,9 +123,7 @@
         <div>
             <aside>
                 <ul id="cate">
-                    <li>
-                        <h4>카테고리</h4>
-                    </li>
+                    <h4>카테고리</h4>
                     <li>데이터</li>
                     <li>데이터</li>
                     <li>데이터</li>
@@ -133,9 +131,7 @@
                     <li>데이터</li>
                 </ul>
                 <ul id="rec">
-                    <li>
-                        <h4>최근 글</h4>
-                    </li>
+                    <h4>최근 글</h4>
                     <li>데이터</li>
                     <li>데이터</li>
                     <li>데이터</li>
@@ -177,4 +173,6 @@
         <hr class="bl">
         <p id="l">Created by bit</p>
     </div>
-</body></html>
+</body>
+
+</html>
