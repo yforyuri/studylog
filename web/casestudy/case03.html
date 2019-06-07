@@ -1,0 +1,112 @@
+<!--DOCTYPE-->
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+    <title>중앙정렬</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fff8e1;
+            text-align: center;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        #main_wrap {
+            width: 300px;
+            height: 250px;
+            background-color: #ffecb3;
+            border: 2px solid #ffca28;
+            box-shadow: 5px 5px 20px #ff6f00;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -150px;
+        }
+
+        h1 {
+            line-height: 60px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ffca28;
+            margin: 5px 0;
+        }
+
+        input,
+        button {
+            width: 100%;
+        }
+
+        #main_wrap>form>table {
+            width: 100%;
+        }
+
+        #main_wrap>form>table td {
+            padding: 2px;
+        }
+
+        #main_wrap>form>table td:nth-of-type(1) {
+            width: 100px;
+        }
+
+        #info {
+            text-align: center;
+        }
+
+        input[type=submit] {
+            background-color: #fff8e1;
+            border: 1px solid #fff8e1;
+            margin-top: 5px;
+            color: #616161;
+
+        }
+
+        button {
+            background-color: #f5f5f5;
+            border: 1px solid #f5f5f5;
+            margin: 5px 0;
+            color: #616161;
+        }
+
+        a {
+            color: #616161;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main_wrap">
+        <h1>LOGIN</h1>
+        <hr>
+        <form>
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td><input type="text" id="id"></td>
+                </tr>
+                <tr>
+                    <td>PASSWORD</td>
+                    <td><input type="password" id="pw"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="LOGIN">
+                        <button>CANCEL</button></td>
+                </tr>
+            </table>
+        </form>
+        <hr>
+        <div>
+            <a href="#">JOIN</a>
+            <a href="#">find ID</a>
+            <a href="#">PW</a>
+        </div>
+    </div>
+</body></html>

@@ -1,0 +1,74 @@
+<!--DOCTYPE-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>수평정렬</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        div {
+            border: 1px solid black;
+        }
+
+        /*        header*/
+        #header {
+            padding: 25px;
+            font-size: 36px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+
+        /*        navigation*/
+        #nav{
+            border-top: 3px solid #4a69bd;
+            border-bottom: 3px solid #4a69bd;
+            height: 30px;
+        }
+        #nav>ul {
+            list-style: none;
+            overflow: hidden;
+        }
+        #nav>ul>li{
+            float: left;
+        }
+        #wrap{
+/*            clear:both;*/
+        }
+        #content{
+            float:left;
+            width:70%;
+            height: 250px;
+        }
+        #aside{
+            float:right;
+            width: 25%;
+            height:200px;
+        }
+        #footer{
+            clear: both;
+            height: 20px;
+            line-height: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">header</div>
+    <div id="nav">
+        <ul>
+            <li><a href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+            <li><a href="#">menu3</a></li>
+            <li><a href="#">menu4</a></li>
+            <li><a href="#">menu5</a></li>
+        </ul>
+    </div>
+    <div id="wrap">
+        <div id="content">content</div>
+        <div id="aside">aside</div>
+    </div>
+    <div id="footer">footer</div>
+</body></html>
