@@ -20,14 +20,18 @@
      text-decoration: none;
  }
 
+ li {
+     list-style: none;
+ }
+
+ img {
+     border: 0;
+ }
+
  #header {
      padding: 20px 0px 60px 240px;
      border-bottom: 1px solid #b2bec3;
      background-color: #fff;
- }
-
- #header > ul {
-     list-style: none;
  }
 
  #header > ul > li {
@@ -69,7 +73,7 @@
  }
 
  #profile {
-     padding:60px 590px 0 320px;
+     padding: 60px 590px 0 320px;
  }
 
  #profile > img {
@@ -80,9 +84,6 @@
      float: right;
  }
 
- aside > ul {
-     list-style: none;
- }
 
  aside > ul > li {
      float: left;
@@ -114,11 +115,8 @@
  }
 
  #story {
-     margin: 20px 270px;
- }
-
- #story > ul {
-     list-style: none;
+     padding: 30px 0 0 280px;
+     height: 110px;
  }
 
  #story > ul > li {
@@ -126,27 +124,23 @@
  }
 
  #story > ul > li > img {
-     width: 80px;
-     padding: 20px;
+     width: 90px;
+     padding: 15px;
      border-radius: 500px;
  }
 
- #storyt {
-     margin: 144px 290px;
-     list-style: none;
+ #stext {
+     margin-top: 14px;
+     margin-left: 300px;
  }
 
- #storyt > ul {
-     list-style: none;
- }
-
- #storyt > ul > li {
+ #stext > ul > li {
      float: left;
      padding-right: 55px;
  }
 
  #con {
-     padding: 70px 220px 0 220px;
+     padding: 50px 220px 0 220px;
  }
 
  #photos > tbody > tr > td {
@@ -154,11 +148,7 @@
  }
 
  #footer {
-     padding: 30px 180px 45px 180px;
- }
-
- #footer > ul {
-     list-style: none;
+     padding: 20px 180px 50px 180px;
  }
 
  #footer > ul > li {
@@ -171,6 +161,6 @@
      padding: 10px;
  }
 
- #cr {
+#footer > ul > li:last-child  {
      padding-left: 120px;
  }
