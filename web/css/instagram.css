@@ -55,12 +55,12 @@
  }
 
  #header > ul > li > input[type=button] {
-     width: 60px;
+     width: 55px;
      border: 1px solid #0984e3;
      border-radius: 4px;
      background-color: #0984e3;
      color: #fff;
-     margin-left: 20px;
+     margin-left: 5px;
  }
 
  #header > ul > li > input[type=submit] {
@@ -69,11 +69,11 @@
      border-radius: 4px;
      background-color: #fff;
      color: #0984e3;
-     margin-left: -236px;
+     margin-left: -235px;
  }
 
  #profile {
-     padding: 60px 590px 0 320px;
+     padding: 60px 510px 0 320px;
  }
 
  #profile > img {
@@ -82,15 +82,15 @@
 
  aside {
      float: right;
+     line-height: 24px;
  }
-
 
  aside > ul > li {
      float: left;
-     padding: 2px;
+     
  }
 
- #name {
+ #userid {
      font-size: 27px;
  }
 
@@ -106,12 +106,21 @@
      border-radius: 4px;
      background-color: #0984e3;
      color: #fff;
+     margin-left: 15px;
  }
 
  #cnt {
      float: left;
-     margin-top: 10px;
-     margin-bottom: 15px;
+     margin-top: 7px;
+     margin-bottom: 13px;
+ }
+
+ #cnt > li:nth-child(2) {
+     padding-left: 50px;
+ }
+
+ #cnt > li:last-child {
+     padding-left: 50px;
  }
 
  #story {
@@ -161,6 +170,6 @@
      padding: 10px;
  }
 
-#footer > ul > li:last-child  {
+ #footer > ul > li:last-child {
      padding-left: 120px;
  }
