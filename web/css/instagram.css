@@ -24,10 +24,6 @@
      list-style: none;
  }
 
- img {
-     border: 0;
- }
-
  #header {
      padding: 20px 0px 60px 240px;
      border-bottom: 1px solid #b2bec3;
@@ -87,19 +83,18 @@
 
  aside > ul > li {
      float: left;
-     
  }
 
- #userid {
+ #userid > li:first-child {
      font-size: 27px;
  }
 
- aside > ul > li > img {
+ #userid > li > img {
      height: 20px;
      margin-top: 5px;
  }
 
- aside > ul > li > input[type=button] {
+ #userid > li > input[type=button] {
      width: 65px;
      height: 30px;
      border: 1px solid #0984e3;
@@ -124,32 +119,30 @@
  }
 
  #story {
-     padding: 30px 0 0 280px;
-     height: 110px;
+     padding: 25px 0 0 280px;
+     height: 150px;
  }
 
  #story > ul > li {
      float: left;
  }
 
- #story > ul > li > img {
+ #spic > li > img {
      width: 90px;
      padding: 15px;
      border-radius: 500px;
  }
 
  #stext {
-     margin-top: 14px;
-     margin-left: 300px;
+     margin: 125px 0 0 20px;
  }
 
- #stext > ul > li {
-     float: left;
+ #stext > li {
      padding-right: 55px;
  }
 
  #con {
-     padding: 50px 220px 0 220px;
+     padding: 25px 220px 0 220px;
  }
 
  #photos > tbody > tr > td {
@@ -157,7 +150,8 @@
  }
 
  #footer {
-     padding: 20px 180px 50px 180px;
+     padding: 20px 180px 30px 180px;
+     height: 20px;
  }
 
  #footer > ul > li {
