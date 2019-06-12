@@ -83,6 +83,14 @@ li {
     border: 1px solid #DADADA;
     margin-bottom: 5px;
 }
+#confirmpnum{
+    width: 460px;
+    height: 50px;
+    text-align: left;
+    color: #8E8E8E;
+    border: 1px solid #DADADA;
+    background-color: #F7F7F7;
+}
 input[type=button] {
     width: 138px;
     height: 50px;
