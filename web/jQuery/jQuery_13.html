@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                $('#allCheck').change(function(){
+                    var chk = $(this).prop('checked');
+//                    this.checked
+                    if(chk){
+                        $('#item').children().prop('checked', true);
+                    }else{
+                        $('#item').children().prop('checked', false);
+                    }
+                });
+                
+                $('#year').change(function(){
+                    var v1 = $('#year>option:selected').val();
+                    alert(v1);
+//                    location.href=v1;
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+        
+        년도
+        <select id="year">
+            <option value="2019">2019</option>
+            <option value="2016">2018</option>
+            <option value="2017">2017</option>
+        </select>
+        <br><br>
+        모두선택<input type="checkbox" id="allCheck">
+        <div id="item">
+            <input type="checkbox"><br>
+            <input type="checkbox"><br>
+            <input type="checkbox"><br>
+            <input type="checkbox"><br>
+            <input type="checkbox"><br>
+        </div>
+    </body>
+</html>

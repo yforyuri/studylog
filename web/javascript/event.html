@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>event</title>
+</head>
+
+<body>
+    
+    <form id="loginform" action="http://www.naver.com">
+        아이디 <input type="text" id="uId"><br>
+        비밀번호 <input type="password" id="uPw"><br>
+        <input type="submit" value="login">
+
+        
+    </form>
+
+    
+    <h1 id="title">자바스크립트의 처리</h1>
+    <input type="text" id="msg" placeholder="메세지를입력하세요">
+    <input type="button" value="텍스트변경">
+    
+    <input type="button" id="btn00" value="버튼 인라인 방식 이벤트처리" ondblclick="alert('더블클릭')">
+    <input type="button" id="delete" value="삭제" onclick="delMsg(1);">
+    
+    <h2 id="text"></h2>
+
+
+<script>
+    
+    var loginform
+    
+    function dleMsg(index){
+        
+    }
+    
+    
+    
+    window.onload = function() {
+
+        var cnt = 0;
+        //                버튼 캐스팅(문서객체로 변환)
+        var btn = document.getElementById('btn');
+
+
+        //                이벤트 적용: 버튼에 이벤트 속성에 함수로 등록
+        btn.onclick = function(e) {
+            
+            var event = e ||window.event;
+            
+            var text = document.getElementById('text');
+            
+            for(var key in event){
+                text.innerHTML += key + ' : '+event[key];
+            };
+            
+//            this는 이벤트가 발생한 객체를 가르킨다
+            this.style.color='red';
+ //                alert('클릭!!');           
+            var title = document.getElementById('title');
+            //                alert(title.innerHTML);
+
+            title.innerHTML += '<br> 텍스트를 변경합니다' + cnt;
+        };
+
+
+    };
+
+    var inputMsg = document.getElementById('msg');
+    inputMsg
+</script>
+    </body></html>

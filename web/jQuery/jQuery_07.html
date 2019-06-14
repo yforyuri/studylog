@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                var arr=[];
+                arr.push({name: 'NAVER', url : 'http://www.naver.com'});
+                arr.push({name: 'Daum', url : 'http://www.daum.net'});
+                arr.push({name: 'google', url : 'http://www.google.com'});
+                
+                $('div').append(function(index){
+                    
+                    var output ='';
+                    output += '<a href="'+arr[index].url+'">'+arr[index].name+'</a>';
+                    
+                    return output;
+                    
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+        
+        <div></div>
+        <div></div>
+        <div></div>
+        
+    </body>
+</html>
+

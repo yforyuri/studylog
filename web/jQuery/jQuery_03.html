@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>jQuery03</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var xml = '';
+            xml += '<friends>';
+            xml += '    <friend>';
+            xml += '         <name>NAVER</name>';
+            xml += '         <language>JAVA</language>';
+            xml += '    </friend>';
+            xml += '    <friend>';
+            xml += '         <name>Daum</name>';
+            xml += '         <language>C#</language>';
+            xml += '    </friend>';
+            xml += '    <friend>';
+            xml += '         <name>google</name>';
+            xml += '         <language>Javascript</language>';
+            xml += '    </friend>';
+            xml += '</friends>';
+
+            var xmlDoc = $.parseXML(xml);
+
+            $(xmlDoc).find('friend').each(function(index) {
+                var name = $(this).find('name').text();
+                var language = $(this).find('language').text();
+
+                var output = '';
+                output += '<div>'
+                output += '<h1 class="title">'
+                output += name;
+                output += '</h1>'
+                output += '<h3>'
+                output += ' ' + language;
+                output += '</h3>'
+                output += '</div>'
+
+                document.body.innerHTML += output;
+
+            });
+            
+            
+            
+            
+            setTimeout(function(){
+                    $('h1').removeClass('title');
+                },5*1000);
+        });
+    </script>
+</head>
+
+<body>
+
+</body></html>

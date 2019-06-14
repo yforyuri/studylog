@@ -1,0 +1,39 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                $('#form').submit(function(event){
+                    var userId = $('#userId').val();
+                    var userPw = $('#userPw').val();
+                    
+                    if(userId.length<1){
+                        alert('아이디를 입력해주세요');
+                        $('#userId').focus();
+                        return false;
+                    }
+                    if(userPw.length<1){
+                        alert('비밀번호를 입력해주세요.');
+                        $('#userPw').focus();
+                        return false;
+                    }
+                    return true;
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+        <form id="form">
+            id<input type="text" id="userId" name="userId"><br>
+            pw<input type="password" id="userPw" name="userPw"><br>
+            
+            <br>
+            <input type="submit" value="입력">
+        </form>
+    </body>
+</html>
+

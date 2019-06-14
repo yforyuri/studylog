@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery event</title>
+    <style>
+        .reverse{
+            background-color: antiquewhite;
+            color: aquamarine;
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('h1').on('click', function() {
+                $(this).html(function(index, html) {
+                    
+                    $(this).off();   //이벤트 한번 반응하고 제거
+                    return html + '+';
+                });
+            });
+
+/*            $('h1').on({
+                mouseenter: function() {
+                    $(this).addClass('reverse');
+                },
+                mouseleave: function() {
+                    $(this).removeClass('reverse');
+                },
+            });*/
+            
+            $('h1').hover(function(){
+                $(this).addClass('reverse');
+            },function(){
+                $(this).removeClass('reverse');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>h1-00</h1>
+    <h1>h1-01</h1>
+    <h1>h1-02</h1>
+</body></html>

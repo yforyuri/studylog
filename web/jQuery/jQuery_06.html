@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>appendTo
+        </title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(function(){
+//                동적 문서객체 생성
+//                h1태그릐 문서객체 생성
+//                appendTo(대상) 메소드를 이용해서 객체를 추가 ->화면에 노출됨
+                $('<h1></h1>').html('<i>안녕하세요</i>').appendTo('body');
+                $('<p><b>안녕</b></p>').appendTo('body');
+                
+                $('<img>').attr({src :'../img/duck.jpg', width:300}).appendTo('body');
+                
+                $('<img>', {
+                    src:'../img/duck.jpg',
+                    width:400,
+                    height:400
+                }).appendTo('body');
+                
+                var h1='<h1>새로운 H1 Tag 00</h1>';
+                var h2='<h1>새로운 H1 Tag 01</h1>';
+                
+                $('body').append(h1, h2, h1, h2, h1);
+                
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

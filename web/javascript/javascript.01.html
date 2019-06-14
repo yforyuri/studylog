@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <html>
+        <head>
+            <title>Javascript First</title>
+            <script>
+/*                var pi = 3.141592;
+                var r=10;
+                alert('원의 둘레는 : '+ pi*2*r);
+                alert('Javascript First\n<img src="/img/1.png">');*/
+                
+                
+                var v;  //1. undefined
+                var num=10;  //2. number
+                var str='hello JavaScript' //3. string
+                var boolCheck=true; // 4. boolean
+                var functionType=function(){}; // 5. function
+                var objType={}; //6. object
+                
+/*                alert( typeof(v));
+                alert( typeof(num));
+                alert( typeof(str));
+                alert( typeof(boolCheck));
+                alert( typeof(functionType));
+                alert( typeof(objType));*/
+                
+                var num1 = '30';
+                var num2 = '30a';
+                
+                var num3 = Number(num1);
+//                alert(typeof(num3));
+//                alert(num3);
+                var num4 = Number(num2);
+//                alert(num4);
+                
+                
+                
+//                javascript배열
+                
+                var array =[1, 2, 7, 21, 72];
+                
+                alert(array);
+                
+                var result = 0;
+                
+                for(var i=0; i<array.length; i++){
+                    result += array[i];
+                }
+                
+                alert(result);
+                
+                var array = [
+                    1,
+                    'one',
+                    false,
+                    function(){},
+                    {},
+                    [1,2,3,4,5]
+                ];
+                
+//                alert(array);
+                
+                for(var o in array){
+                    alert(typeof(o));
+                }
+                
+                
+                /*window.onload = function(){
+                    var chk=confirm('출력할까요?');
+                    if(chk){
+                        
+                    
+                    
+                  var list='';
+                    list +='<ul>\n';
+                    list +='   <li>' + v + '</li>\n';
+                    list +='   <li>' + num + '</li>\n';
+                    list +='   <li>' + str + '</li>\n';
+                    list +='   <li>' + boolCheck + '</li>\n';
+                    list +='   <li>' + functionType + '</li>\n';
+                    list +='   <li>' + objType + '</li>\n';
+                    
+                    list +='</ul>\n';
+                    alert(list);
+                    
+                    document.body.innerHTML = list;
+                        }
+                }*/
+                
+//                window.body.innerHTML=
+                    
+            </script>
+        </head>
+        <body>
+        </body>
+    </html>
+</html>

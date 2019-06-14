@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>window 객체</title>
+        <meta charset="UTF-8">
+        <script>
+            
+//            window.open();
+//          window.open('http://www.naver.com','child','width=600, height=200');  
+/*            var child = window.open('','child','width=600, height=200'); 
+            
+            child.document.write('<h1>form parent window</h1>');
+            
+            function moveUrl(2){
+                alert(location.href);
+                location.href='http://www.naver.com';
+            }
+            
+            alert(1);*/
+            
+        </script>
+        <script>
+//            alert('new1');
+            window.onload=function(){
+//                alert('new2');
+                
+                // 태그생성
+                var header1 = document.createElement('h1');
+                // 태그에 넣을 텍스트 생성
+                var text1 = document.createTextNode('hello!');
+                
+                // 태그생성
+                var header2 = document.createElement('h1');
+                // 태그에 넣을 텍스트 생성
+                var text2 = document.createTextNode('hello!');
+                
+                
+//                이미지 태그 생성
+                var img = document.createElement('img');
+                img.src='../img/duck.jpg'
+                
+                //  태그에 텍스트를 삽입
+                header1.appendChild(text1);
+                header2.appendChild(text2);
+                //  새로만든 태그를 body태그에 대입하는 형태
+//                document.body.appendChild(header1);
+//                document.body.appendChild(header2);
+                
+//                document.getElementById('msg').appendChild(img);
+//                document.getElementById('msg').appendChild(header2);
+                
+//                문서객체 캐스팅:tag를 문서객체로 만드는것
+                var h1 = document.getElementById('msg');
+                
+                var div1= document.querySelector('#text');
+                div1.innerHTML='안녕';
+                div1.style.color='red';
+                
+                var innerhtml=h1.innerHTML;
+                
+                h1.innerHTML='<span style="color:red">새로운 엘리먼트</span>';
+                
+                
+//                태그삭제: 
+//                1.삭제대상 캐스팅
+//                2.삭제 대상의 부모태그를 캐스팅
+//                3. 부모태그 객체 removeChild(삭제대상 객체)
+                
+                if (confirm('삭제하시겠습니까?')){
+                    var r =document.querySelector('#remove');
+                    document.body.removeChild(r);
+                }
+   
+            };
+        </script>
+    </head>
+    <body>
+        <h1 id="msg"><i>hi</i></h1>
+        <div id="text"></div>
+        <p class="title"></p>
+        <h1 id="remove">이 태그는 지워</h1>
+        
+<!--        <h1 style="cursor: pointer; background-color: aquamarine;" onclick="moveUrl()">naver</h1>-->
+        
+<!--
+        <h1>h1</h1>
+        <script>alert(2)</script>
+        <h1>h2</h1>
+        <script>alert(3)</script>
+        <h1>h3</h1>
+        <script>alert(4)</script>
+        <h1>h4</h1>
+        <script>alert(5)</script>
+        <h1>h5</h1>
+-->
+
+    </body>
+</html>

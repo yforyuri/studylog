@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>attr()</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+            $(document).ready(function(){
+                
+                var imgPath = $('img').attr('src'); // getter
+                
+                //alert(imgPath);
+                
+                setTimeout(function(){
+                    //$('img').attr('width', 200);
+                    /*$('img').attr('width', function(index){
+                        return (index+1)*50;
+                    });    */
+                    
+                    /*$('img').attr({
+                        src:'../images/mickey_mouse.png',
+                        width: function(index){
+                            return (index+1)*50;
+                        }                        
+                    });*/
+                    
+                    
+                    
+                    var text1 = $('h1').html();
+                    var text2 = $('h1').text();
+                    
+                    alert(text1 + ' : ' + text2);
+                    
+                    //$('h1').html('<i>안녕</i>');
+                    $('h1').text('<i>안녕</i>');
+                    
+                    
+                },3000);
+                
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+
+    <img src="../img/duck.jpg">
+    <img src="../img/duck.jpg">
+    <img src="../img/duck.jpg">
+    <img src="../img/duck.jpg">
+</body></html>

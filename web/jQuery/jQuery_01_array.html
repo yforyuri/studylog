@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery array</title>
+        <style>
+            
+            .title{
+                background-color: dimgray;
+                color: black;
+                font-size: 50px;
+                text-align: center;
+                border-radius: 25px;
+                height: 70px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                
+                
+                
+                
+                var arr=[];
+                arr.push({name:'NAVER', url:'http://www.naver.com'});
+                arr.push({name:'Daum', url:'http://www.daum.net'});
+                arr.push({name:'google', url:'http://www.google.com'});
+                
+                var nHtml=''; 
+                
+//                $.each(배열원본, 처리 함수)
+//                1. naver 2. daum 3. google
+                $.each(arr, function(index, item){
+                       
+                    nHtml +='<a href="'+item.url+'">'+index+'.'+item.name+'</a>'; 
+                });
+                
+//                document.body.innerHTML=nHtml;
+                
+                
+//                $('h1').css('background-color', 'yellow');
+                
+                $('h1').each(function(index, item){
+                    
+//                    item.innerHTML +='['+index+']';
+//                    alert(item.innerHTML);
+//                    alert($(item).html());
+//                    var v = $(item).html();
+//                    $(item).html($(item).html()+' ['+index+']');
+                    
+                    var insertHtml = '';
+                    insertHtml += '<a href="'+arr[index].url+'">';
+                    insertHtml += arr[index].name;
+                    insertHtml += '</a>'
+                    
+                    $(item).html(insertHtml);
+                    
+                    if(index%2 ==1){
+                        $(item).addClass('title');
+                    }
+                });
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+        
+        <h1>H1 - 0</h1>
+        <h1>H1 - 1</h1>
+        <h1>H1 - 2</h1>
+        
+    </body>
+</html>
