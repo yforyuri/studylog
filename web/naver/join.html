@@ -5,7 +5,59 @@
     <meta charset="UTF-8">
     <link href="css/default.css" rel="stylesheet" type="text/css">
     <title>NAVER</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script>
+        $(document).ready(function() {
+
+            //            div box focus in/out effect
+            $('input[type=text], input[type=password], select').focusin(function() {
+                $(this).closest('div').css('border', '1px solid #08a600');
+            });
+            $('input[type=text], input[type=password], select').focusout(function() {
+                $(this).closest('div').css('border', '1px solid #DADADA');
+            });
+            
+            
+//            정규식 한 곳으로 빼기
+//            pw correct 일 때? msg? img?
+//            정규식 적용 했어도 가끔 한글 써도 넘어가는..
+//            pin box div 배경 맞춰서 수정하기
+                       
+//            유효성검사
+            $('#userId').focusout(function() {
+                var idPt = /[a-z0-9_-]{5,20}/;
+                if ($(this).val().length < 1) {
+                    $('#idMsg').text('필수 정보입니다.').css('color', 'red');
+
+                    return false;
+                }
+                if(idPt.test($(this).val())){
+                    $('#idMsg').text('멋진 아이디네요!').css('color', '#08A600');
+
+                    return userId;
+                }else{
+                    $('#idMsg').text('5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.').css('color', 'red');
+                    
+                    return false;
+                }
+            });
+            
+            $('#userPw').focusout(function(){
+                var pwPt =  /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/;
+                if($(this).val().length<1){
+                    $('#pwMsg').text('필수 정보입니다.').css('color', 'red');
+
+                    return false;
+                }
+                if(!pwPt.test($(this).val())){
+                    $('#pwMsg').text('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.').css('color', 'red');
+                }else{
+                    
+                }
+            });
+
+        });
+
     </script>
 </head>
 
@@ -19,18 +71,22 @@
             <div class="info" id="id">
                 <input type="text" id="userId"><span>@naver.com</span>
             </div>
+            <span id="idMsg"></span>
             <label for="userPw">비밀번호</label>
             <div class="info" id="pw">
                 <input type="password" id="userPw">
             </div>
+            <span id="pwMsg"></span>
             <label for="conPw">비밀번호 재확인</label>
             <div class="info" id="confirmPw">
                 <input type="password" id="conPw">
             </div>
+            <span id="cpMsg"></span>
             <label for="userName">이름</label>
             <div class="info" id="name">
                 <input type="text" class="bBox" id="userName">
             </div>
+            <span id="nMsg"></span>
             <label for="bDay">생년월일</label>
             <div>
                 <div class="birth" id="year">
@@ -46,6 +102,7 @@
                     <input type="text" class="dBox" placeholder="일">
                 </div>
             </div>
+            <span id="bMsg"></span>
             <label for="gBox">성별</label>
             <div class="info" id="gender">
                 <select id="sBox">
@@ -54,10 +111,12 @@
                     <option value="f">여자</option>
                 </select>
             </div>
+            <span id="gMsg"></span>
             <label for="userM">본인 확인 이메일<span>(선택)</span></label>
             <div class="info" id="mail">
                 <input type="text" class="bBox" id="userM" placeholder="선택입력">
             </div>
+            <span id="mMsg"></span>
             <label for="userP">휴대전화</label>
             <div class="info" id="nNum">
                 <select id="sBox">
@@ -65,11 +124,11 @@
                     <option value="미국/캐나다 +1">미국/캐나다 +1</option>
                 </select>
             </div>
-            <span id="pNum">
+            <div id="pNum">
                 <input type="text" id="userP" placeholder="전화번호 입력">
-            </span><input type="button" value="인증번호 받기">
-            <input type="text" id="confirmpnum" placeholder="인증번호를 입력하세요">
-
+            </div><input type="button" value="인증번호 받기">
+            <div id="pin"><input type="text" id="confirmpnum" placeholder="인증번호를 입력하세요" disabled></div>
+            <span id="pMsg"></span>
             <input type="submit" value="가입하기" id="complete">
         </div>
         <div id="footer">
@@ -89,4 +148,6 @@
             </div>
         </div>
     </div>
-</body></html>
+</body>
+
+</html>
