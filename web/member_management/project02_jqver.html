@@ -196,27 +196,16 @@
 
         Member.prototype.makeHtml = function(i) {
             var nHtml = '';
-            nHtml += '<tr>\n <td>';
-            nHtml += i;
-            nHtml += '</td>\n <td>';
-            nHtml += this.userId;
-            nHtml += '</td>\n <td>';
-            nHtml += this.userPw;
-            nHtml += '</td>\n <td>';
-            nHtml += this.userName;
-            nHtml += '</td>\n <td>';
-            nHtml += '<a onclick="editMember(';
-            nHtml += i;
-            nHtml += ')">edit</a> | <a onclick="delMember(';
-            nHtml += i;
-            nHtml += ')">delete</a> </td>\n</tr>\n';
+            nHtml += '<tr>\n';
+            nHtml += '  <td>' + i + '</td>\n';
+            nHtml += '  <td>' + this.userId + '</td>\n';
+            nHtml += '  <td>' + this.userPw + '</td>\n';
+            nHtml += '  <td>' + this.userName + '</td>\n';
+            nHtml += '  <td><a onclick="editMember(' + i + ');">edit</a> | <a onclick="delMember(' + i + ');">delete</a></td>\n';
+            nHtml += '</tr>\n';
 
             return nHtml;
         };
-
-//        Member.prototype.showData = function() {
-//            alert('아이디:' + this.userId + '\n비밀번호:' + this.userPw + '\n이름:' + this.userName);
-//        };
 
         $(document).ready(function() {
 
@@ -228,16 +217,15 @@
                 localStorage.setItem('members', JSON.stringify(members));
 
             } else {
-                // local storage에 members가 존재하는경우
+                // local storage에 members가 존재
                 members = JSON.parse(localStorage.getItem('members'));
                 setListTable();
             }
-            //저장소 변수 선언
-            //localStorage에서 데이터 유무에 따라 배열 선언
 
 
 
-            //회원 입력 폼의 SUBMIT 재 정의
+            // regForm 문서객체 만들기 
+            //회원입력 폼의 SUBMIT 재 정의
             $('#regForm').submit(function() {
                 //사용자 입력 데이터 Input 캐스팅
                 var uId = $('#userId');
@@ -275,12 +263,11 @@
 
 
             //회원 수정 폼의 SUBMIT 재 정의
-
             $('#editForm').submit(function() {
 
-                //공백을 체크하는 유효성 검사
-                //1. 캐스팅
-                //2. 객체.value 값을 검사 : 길이
+                // 공백을 체크하는 유효성 검사
+                // 1. 캐스팅
+                // 2. 객체.value 값을 검사 : 문자열의 길이 검사
                 var editId = $('#editId');
                 var editPw = $('#editPw');
                 var editName = $('#editName');
@@ -322,34 +309,21 @@
 
         });
 
-        //members 배열의 요소들을 출력하는 문자열 반환
+        // members 배열의 요소 출력기능
         function setListTable() {
-            var newHtml = '<tr>\n' +
-                '<td>index</td>\n' +
-                '<td>Id</td>\n' +
-                '<td>Password</td>\n' +
-                '<td>Name</td>\n' +
-                '<td>Manage</td>\n' +
-                '</tr>';
+            var newHtml = '<tr>\n   <td>index</td>\n    <td>ID</td>\n  <td>Password</td>\n <td>Name</td>\n   <td>Manage</td>\n</tr>\n';
+            
             index = 0;
+            
             for (var i = 0; i < members.length; i++) {
                 // newHtml += members[i].makeHtml(i);
-                newHtml += '<tr>\n <td>';
-                newHtml += index;
-                newHtml += '</td>\n <td>';
-                newHtml += members[i].userId;
-                newHtml += '</td>\n <td>';
-                newHtml += members[i].userPw;
-                newHtml += '</td>\n <td>';
-                newHtml += members[i].userName;
-                newHtml += '</td>\n <td>';
-                newHtml += '<a onclick="editMember(';
-                newHtml += index;
-                newHtml += ')">edit</a> | <a onclick="delMember(';
-                newHtml += index++;
-                newHtml += ')">delete</a> </td>\n</tr>\n';
-
-
+                newHtml += '<tr>\n';
+                newHtml += '  <td>' + i + '</td>\n';
+                newHtml += '  <td>' + members[i].userId + '</td>\n';
+                newHtml += '  <td>' + members[i].userPw + '</td>\n';
+                newHtml += '  <td>' + members[i].userName + '</td>\n';
+                newHtml += '  <td><a onclick="editMember(' + i + ');">edit</a> | <a onclick="delMember(' + i + ');">delete</a></td>\n';
+                newHtml += '</tr>\n';
             }
             $('#listRow').html(newHtml);
         };
