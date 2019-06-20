@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/form.css" rel="stylesheet" type="text/css">
+    <title>NAVER</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="js/form.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header">
+            <a href="http://www.naver.com"><img src="https://static.nid.naver.com/images//ui/join/m_naver_logo.png"></a>
+        </div>
+        <div class="form">
+            <label for="userId">아이디</label>
+            <div class="info" id="id">
+                <input type="text" id="userId"><span>@naver.com</span>
+            </div>
+            <span id="idMsg"></span>
+            <label for="userPw">비밀번호</label>
+            <div class="info" id="pw">
+                <input type="password" id="userPw">
+            </div>
+            <span id="pwMsg"></span>
+            <label for="conPw">비밀번호 재확인</label>
+            <div class="info" id="confirmPw">
+                <input type="password" id="conPw">
+            </div>
+            <span id="cpMsg"></span>
+            <label for="userName">이름</label>
+            <div class="info" id="name">
+                <input type="text" class="bBox" id="userName">
+            </div>
+            <span id="nMsg"></span>
+            <label for="bDay">생년월일</label>
+            <div>
+                <div class="birth" id="year">
+                    <input type="text" class="dBox" placeholder="년(4자)">
+                </div>
+                <div class="birth" id="month">
+                    <select id="mBox">
+                        <option value=""> 월</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="birth" id="day">
+                    <input type="text" class="dBox" placeholder="일">
+                </div>
+            </div>
+            <span id="bMsg"></span>
+            <label for="gBox">성별</label>
+            <div class="info" id="gender">
+                <select id="sBox">
+                    <option value=""> 성별</option>
+                    <option value="m">남자</option>
+                    <option value="f">여자</option>
+                </select>
+            </div>
+            <span id="gMsg"></span>
+            <label for="userM">본인 확인 이메일<span>(선택)</span></label>
+            <div class="info" id="mail">
+                <input type="text" class="bBox" id="userM" placeholder="선택입력">
+            </div>
+            <span id="mMsg"></span>
+            <label for="userP">휴대전화</label>
+            <div class="info" id="nNum">
+                <select id="sBox">
+                    <option value="대한민국 +82"> 대한민국 +82</option>
+                    <option value="미국/캐나다 +1">미국/캐나다 +1</option>
+                </select>
+            </div>
+            <div id="pNum">
+                <input type="text" id="userP" placeholder="전화번호 입력">
+            </div><input type="button" value="인증번호 받기">
+            <div id="pin"><input type="text" id="confirmpnum" placeholder="인증번호를 입력하세요" disabled></div>
+            <span id="pMsg"></span>
+            <input type="submit" value="가입하기" id="complete">
+        </div>
+        <div id="footer">
+            <ul>
+                <li><a href="http://policy.naver.com/rules/service.html">이용약관</a></li>
+                <li><a href="http://policy.naver.com/policy/privacy.html"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="http://policy.naver.com/rules/disclaimer.html">책임의 한계와 법적고지</a></li>
+                <li><a href="https://help.naver.com/support/alias/membership/p.membership/p.membership_26.naver">회원정보 고객센터</a></li>
+            </ul>
+            <div id="rights">
+                <ul>
+                    <li><a href="https://www.navercorp.com/"><img src="https://static.nid.naver.com/images//ui/join/m_naver_logo.png"></a></li>
+                    <li>Copyright</li>
+                    <li><a href="https://www.navercorp.com/"><strong>NAVER Corp.</strong></a></li>
+                    <li>All Rights Reserved.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
