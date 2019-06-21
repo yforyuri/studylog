@@ -55,6 +55,13 @@
                     
                 }
             });
+            $('#conPw').focusout(function(){
+                if($(this).val().length<1){
+                    $('#cpMsg').text('필수 정보입니다.').css('color', 'red');
+
+                    return false;
+                }
+            });
 
         });
 
