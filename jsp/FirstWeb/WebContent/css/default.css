@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+ * {
+     margin: 0;
+     padding: 0;
+ }
+
+ body {
+     font-family: 'Roboto Mono', monospace;
+     background-color: #eceff1;
+ }
+
+ #main_wrap {
+     width: 950px;
+     height: auto;
+     padding: 10px;
+     background-color: #fff;
+     border: 1px solid #ddd;
+     box-shadow: 0 5px 3px #aaa;
+     border-radius: 5px;
+     margin: 5px auto;
+ }
+
+ #header {
+     padding: 50px;
+ }
+
+ #header > h1 {
+     margin-bottom: 5px;
+ }
+
+ #header > h5 {
+     font-weight: normal;
+ }
+
+ #nav {
+     height: 40px;
+     border-top: 1px solid #ddd;
+     border-bottom: 1px solid #ddd;
+     overflow: hidden;
+ }
+
+ #menu {
+     float: left;
+ }
+
+ #menu > ul {
+     list-style: none;
+ }
+
+ #menu > ul > li {
+     float: left;
+     line-height: 40px;
+     padding: 0 20px;
+ }
+
+ #menu > ul > li > a {
+     display: block;
+     text-decoration: none;
+ }
+
+ #menu > ul > li > a:hover {
+     display: block;
+     color: #bdbdbd;
+ }
+
+ #search {
+     float: right;
+     margin: 8px 20px 8px 200px;
+ }
+
+ #search > input {
+     height: 25px;
+     width: 170px;
+     border: 1px solid #ddd;
+     border-radius: 7px 0 0 7px;
+ }
+
+ #search > input[type=button] {
+     height: 25px;
+     width: 45px;
+     border: 1px solid #ddd;
+     border-radius: 0 7px 7px 0;
+     color: #616161;
+ }
+
+ #con {
+     overflow: hidden;
+     padding: 5px;
+     margin-left: 20px;
+ }
+
+ #contents {
+     float: left;
+     width: 600px;
+ }
+
+ .title {
+     margin-top: 20px;
+ }
+
+ .date {
+     display: block;
+     font-size: 11px;
+ }
+
+ #contents > article > p {
+     margin-top: 20px;
+     margin-bottom: 30px;
+ }
+
+ img {
+     width: 500px;
+     margin-top: 20px;
+ }
+
+ #aside {
+     float: right;
+     width: 200px;
+     padding: 10px;
+ }
+
+ #aside > ul {
+     list-style: none;
+     margin-left: 5px;
+     margin-bottom: 45px;
+     margin-top: 5px;
+ }
+
+ #aside > ul > li {
+     height: 25px;
+     line-height: 25px;
+ }
+
+ h4 {
+     margin-top: 55px;
+ }
+
+ #footer {
+     margin-left: 20px;
+     margin-top: 3px;
+     font-size: 13px;
+ }
