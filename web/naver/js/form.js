@@ -9,8 +9,6 @@ $(document).ready(function () {
 
 
     //            정규식 한 곳으로 빼기
-    //            pw correct 일 때? msg? img?
-    //            완성하고 js파일 분리해서 업로드
 
 
     //            유효성검사
@@ -44,7 +42,6 @@ $(document).ready(function () {
     });
 
     $('#conPw').focusout(function () {
-        var cpPt = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/;
         if ($(this).val().length < 1) {
             $('#cpMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
@@ -52,7 +49,7 @@ $(document).ready(function () {
     });
 
     $('#userName').focusout(function () {
-        var nPt = /[가-힣a-zA-Z]/;
+        var nPt = /^[가-힣a-zA-Z]$/;
         if ($(this).val().length < 1) {
             $('#nMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
@@ -61,6 +58,14 @@ $(document).ready(function () {
             return true;
         } else {
             $('#nMsg').html('한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)').css('color', 'red');
+            return false;
+        }
+    });
+    
+    $('.dBox').focusout(function(){
+        var bPt=/^[1919-2019]$/;
+        if($(this).val().length<1){
+            $('#bMsg').html('태어난 년도 4자리를 정확하게 입력하세요.').css('color', 'red');
             return false;
         }
     });
