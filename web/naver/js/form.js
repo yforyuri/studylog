@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    //            div box focus in/out effect
+
+    //    focus in/out effect
     $('input[type=text], input[type=password], select').focusin(function () {
         $(this).closest('div').css('border', '1px solid #08a600');
     });
@@ -17,7 +18,7 @@ $(document).ready(function () {
         if ($(this).val().length < 1) {
             $('#idMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
-        }else if (idPt.test($(this).val())) {
+        } else if (idPt.test($(this).val())) {
             $('#idMsg').html('멋진 아이디네요!').css('color', '#08A600');
             return true;
         } else {
@@ -27,13 +28,13 @@ $(document).ready(function () {
     });
 
     $('#userPw').focusout(function () {
-        var pwPt = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/;
+        var pwPt = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,16}$/;
         if ($(this).val().length < 1) {
             $('#pwMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
-        }else if (pwPt.test($(this).val())) {
+        } else if (pwPt.test($(this).val())) {
             $('#pwMsg').css('display', 'none');
-//            lock img change
+            //            lock img change
             return true;
         } else {
             $('#pwMsg').html('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.').css('color', 'red');
@@ -45,15 +46,19 @@ $(document).ready(function () {
         if ($(this).val().length < 1) {
             $('#cpMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
+        } else if ($(this).val() == $('#userPw').val()) {
+            $('#cpMsg').html('비밀번호가 일치합니다.').css('color', '#08A600');
+        } else {
+            $('#cpMsg').html('비밀번호가 일치하지 않습니다').css('color', 'red');
         }
     });
 
     $('#userName').focusout(function () {
-        var nPt = /^[가-힣a-zA-Z]$/;
+        var nPt = /^[가-힣a-zA-Z]+$/;
         if ($(this).val().length < 1) {
             $('#nMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
-        }else if (nPt.test($(this).val())) {
+        } else if (nPt.test($(this).val())) {
             $('#nMsg').css('display', 'none');
             return true;
         } else {
@@ -61,12 +66,50 @@ $(document).ready(function () {
             return false;
         }
     });
-    
-    $('.dBox').focusout(function(){
-        var bPt=/^[1919-2019]$/;
-        if($(this).val().length<1){
+
+    $('#by, #bd').focusout(function () {
+        var byPt = /^(19[0-9][0-9]|20\d{2})$/;
+        var bdPt = /^(0[1-9]|[1-2][0-9]|3[0-1])$/;
+        if ($(this).val().length < 1) {
+            $('#bMsg').html('태어난 년도 4자리를 정확하게 입력하세요.').css('color', 'red');
+            return false;
+        } else if (!byPt.test($('#by').val())) {
             $('#bMsg').html('태어난 년도 4자리를 정확하게 입력하세요.').css('color', 'red');
             return false;
         }
+        if (!bdPt.test($('#bd').val())) {
+            $('#bMsg').html('태어난 일(날짜) 2자리를 정확하게 입력하세요.').css('color', 'red');
+            return false;
+        } else {
+            $('#bMsg').css('display', 'none');
+            return true;
+        }
     });
+
+    $('#userM').focusout(function () {
+        var mPt = /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/;
+        if (mPt.test($(this).val())) {
+            $('#mMsg').css('display', 'none');
+            return true;
+        } else if($(this).val().length > 0){
+            $('#mMsg').html('이메일 주소를 다시 확인해주세요.').css('color', 'red');
+            return false;
+        }
+    });
+    
+    $('#userP').focusout(function () {
+        var pPt = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+        if ($(this).val().length < 1) {
+            $('#pMsg').html('필수 정보입니다.').css('color', 'red');
+            return false;
+        }else if (pPt.test($(this).val())) {          
+            $('#confirmpnum').removeAttr('disabled');
+            $('#pMsg').html('인증번호를 발송했습니다.(유효시간 30분)<br>인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.<br>이미 가입된 번호이거나, 가상전화번호는 인증번호를 받을 수 없습니다.').css('color', '#08A600');
+            return true;
+        } else {
+            $('#pMsg').html('형식에 맞지 않는 번호입니다.').css('color', 'red');
+            return false;
+        }
+    });
+
 });
