@@ -104,8 +104,9 @@ $(document).ready(function () {
         if ($(this).val().length < 1) {
             $('#pMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
-        }else if (pPt.test($(this).val())) {          
+        }else if (pPt.test($(this).val())) {
             $('#confirmpnum').removeAttr('disabled');
+            $('#pin').css('background-color', '#FFF')
             $('#pMsg').html('인증번호를 발송했습니다.(유효시간 30분)<br>인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.<br>이미 가입된 번호이거나, 가상전화번호는 인증번호를 받을 수 없습니다.').css('color', '#08A600');
             return true;
         } else {
