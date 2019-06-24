@@ -33,10 +33,11 @@ $(document).ready(function () {
             $('#pwMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
         } else if (pwPt.test($(this).val())) {
+            $('#pw').css('background-image', 'url(https://static.nid.naver.com/images/ui/join/pc_icon_safe_180417.png)');
             $('#pwMsg').css('display', 'none');
-            //            lock img change
             return true;
         } else {
+            $('#pw').css('background-image', 'url(https://static.nid.naver.com/images/ui/join/pc_icon_not_use.png)');
             $('#pwMsg').html('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.').css('color', 'red');
             return false;
         }
@@ -47,6 +48,7 @@ $(document).ready(function () {
             $('#cpMsg').html('필수 정보입니다.').css('color', 'red');
             return false;
         } else if ($(this).val() == $('#userPw').val()) {
+            $('#confirmPw').css('background-image', 'url(https://static.nid.naver.com/images/ui/join/pc_icon_check_enable.png)');
             $('#cpMsg').html('비밀번호가 일치합니다.').css('color', '#08A600');
         } else {
             $('#cpMsg').html('비밀번호가 일치하지 않습니다').css('color', 'red');
