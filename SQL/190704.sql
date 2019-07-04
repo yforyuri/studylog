@@ -113,3 +113,63 @@ select b.bookname, b.publisher
 from orders o, customer c, book b
 where o.custid=c.custid and o.bookid=b.bookid
 and c.name='박지성';
+
+
+
+select ename, sal, s.grade
+from  emp e, salgrade s
+where sal between s.losal and s.hisal and ename ='SCOTT';
+
+
+-- self join : 하나의 테이블로 조인하는 형태
+select e.ename || '의 매니저는 ' ||m.ename||'입니다.'
+from emp e, emp m
+where e.mgr=m.empno
+order by m.ename;
+
+select e.empno, e.ename, e.mgr, m.ename
+from emp e, emp m
+where e.mgr=m.empno(+);
+
+
+-- ANSI CROSS JOIN
+select *
+from emp cross join dept;
+
+select *
+from emp, dept;
+
+--ANSI INNER JOIN
+select *
+from emp inner join dept
+on emp.deptno=dept.deptno;
+
+select *
+from emp, dept
+where emp.deptno=dept.deptno;
+
+select *
+from emp join dept
+on emp.deptno=dept.deptno;
+
+select *
+from emp join dept
+USING (deptno);
+
+select e.ename, m.ename
+from emp e left outer join emp m
+on e.mgr=m.empno;
+
+select *
+from customer;
+
+select distinct(custid)
+from orders;
+
+select *
+from orders o, customer c
+where o.custid(+)=c.custid;
+
+select *
+from orders o right outer join customer c
+where o.custid=c.custid;

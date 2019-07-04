@@ -43,7 +43,7 @@ select deptno, count(*), round(avg(sal),2) from emp
 group by deptno;
 
 -- 30. 각 부서에 대해 부서번호 이름, 지역 명, 사원 수, 부서내의 모든 사원의 평균 급여를 출력하시오. 평균 급여는 정수로 반올림 하시오. DECODE 사용.
-select deptno as "부서번호", decode(deptno, 10, 'ACCOUNTING', 20, 'RESEARCH', 30, 'SALES', 40, 'OPERATIONS') as "부서명",
+select deptno as "부서번호", decode(deptno, 10, 'ACCOUNTING', 20, 'RESEARCH', 30, 'SALES', 40, 'OPERATIONS') as "부서명", 
 decode(deptno, 10, 'NEW YORK', 20, 'DALLAS', 30, 'CHICAGO', 40, 'BOSTON') as "지역" ,
 count(*) as "사원 수", round(avg(sal)) as "평균급여"
 from emp
@@ -55,3 +55,51 @@ select job, deptno as DNO, decode(deptno,10,sum(sal)) as "부서10", decode(dept
 from emp
 group by job, deptno
 order by deptno;
+
+
+
+--32. EQUI 조인을 사용하여 SCOTT 사원의 부서번호와 부서 이름을 출력하시오.
+select ename, dname, dept.deptno
+from emp, dept
+where emp.deptno=dept.deptno and ename='SCOTT';
+
+--33. INNER JOIN과 ON 연산자를 사용하여 사원 이름과 함께 그 사원이 소속된 부서이름과 지역 명을 출력하시오.
+select ename, dname, loc
+from emp inner join dept
+on emp.deptno=dept.deptno;
+
+--36. 조인과 WildCARD를 사용하여 이름에 ‘A’가 포함된 모든 사원의 이름과 부서명을 출력하시오.
+select ename, dname
+from emp, dept
+where emp.deptno=dept.deptno and ename like '%A%';
+
+--37. JOIN을 이용하여 NEW YORK에 근무하는 모든 사원의 이름, 업무, 부서번호 및 부서명을 출력하시오.
+select ename, job, dept.deptno, dname
+from emp, dept
+where  emp.deptno=dept.deptno and loc='NEW YORK';
+
+--38. SELF JOIN을 사용하여 사원의 이름 및 사원번호, 관리자 이름을 출력하시오.
+select e.ename, e.empno, m.ename as MGR
+from emp e, emp m
+where e.mgr=m.empno;
+
+--39. OUTER JOIN, SELF JOIN을 사용하여 관리자가 없는 사원을 포함하여 사원번호를 기준으로 내림차순 정렬하여 출력하시오.
+select e.ename, e.empno, m.ename as MGR
+from emp e, emp m
+where e.mgr=m.empno(+)
+order by e.empno desc;
+
+--40. SELF JOIN을 사용하여 지정한 사원의 이름, 부서번호, 지정한 사원과 동일한 부서에서 근무하는 사원을 출력하시오. ( SCOTT )
+select e.ename, e.deptno, m.ename, m.deptno
+from emp e, emp m
+where m.ename='SCOTT' and  e.deptno = m.deptno;
+
+--41. SELF JOIN을 사용하여 WARD 사원보다 늦게 입사한 사원의 이름과 입사일을 출력하시오.
+select e.ename, e.hiredate, m.ename, m.hiredate
+from emp e, emp m
+where m.ename='WARD' and e.hiredate > m.hiredate;
+
+--42. SELF JOIN 을 사용하여 관리자보다 먼저 입사한 모든 사원의 이름 및 입사일을 관리자의 이름 및 입사일과 함께 출력하시오.
+select e.ename, e.hiredate, m.ename, m.hiredate
+from emp e, emp m
+where e.mgr=m.empno and m.hiredate > e.hiredate;
