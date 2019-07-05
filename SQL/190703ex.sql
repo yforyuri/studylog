@@ -90,7 +90,7 @@ select * from emp
 where mod(empno, 2)=0;
 
 --19. 입사일을 년도는 2자리(YY), 월은 숫자(MON)로 표시하고 요일은 약어 (DY)로 지정하여 출력하시오.
-select hiredate, TO_CHAR(hiredate, 'YY/MM/DY') from emp;
+select TO_CHAR(hiredate, 'YY/MON/DY') from emp;
 
 --20. 올해 몇 칠이 지났는지 출력하시오. 현재날짜에서 올해 1월 1일을 뺀 결과를 출력하고 TO_DATE 함수를 사용하여 데이터 형을 일치 시키시오.
 select trunc(sysdate-to_date('2019/01/01', 'yyyy/mm/dd')) from dual;
