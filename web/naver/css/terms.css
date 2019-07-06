@@ -146,10 +146,9 @@
  #footer {
      margin: 0 auto;
      height: 60px;
-     width: 420px;
+     width: 460px;
      text-align: center;
  }
-
  #footer > ul > li {
      float: left;
      font-size: 12px;
