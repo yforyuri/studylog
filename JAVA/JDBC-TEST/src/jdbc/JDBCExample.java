@@ -26,10 +26,6 @@ public class JDBCExample {
 			String sqlInsert = "insert into emp values (?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(sqlInsert);
 
-//			3.EMP 테이블에서 “SCOTT” 사원의 급여(sal) 정보를 1000으로 바꾸는 프로그램을 작성해보자.
-			String sqlUpdate = "update emp set sal='1000' where ename='SCOTT'";
-			stmt.executeUpdate(sqlUpdate);
-
 			pstmt.setInt(1, 0001);
 			pstmt.setString(2, "summer");
 			pstmt.setString(3, "CAT");
@@ -63,6 +59,10 @@ public class JDBCExample {
 				System.out.println("부서번호 :" + rs.getInt(8));
 				System.out.println("----------------------------");
 			}
+//			3.EMP 테이블에서 “SCOTT” 사원의 급여(sal) 정보를 1000으로 바꾸는 프로그램을 작성해보자.
+			String sqlUpdate = "update emp set sal='1000' where ename='SCOTT'";
+			stmt.executeUpdate(sqlUpdate);
+
 
 //			4.EMP 테이블에서 “SCOTT” 이름으로 검색한 결과를 출력하는 프로그램을 작성해보자.	
 			String sqlFind = "select * from emp where ename='SCOTT'";
@@ -87,7 +87,6 @@ public class JDBCExample {
 			String sqlAll = "select * from emp e join dept d where e.deptno = d.deptno";
 
 			ResultSet rsa = stmt.executeQuery(sqlAll);
-			System.out.println("----------------------------");
 			System.out.println("-------------P--------------");
 			System.out.println("-------------R--------------");
 			System.out.println("-------------I--------------");
