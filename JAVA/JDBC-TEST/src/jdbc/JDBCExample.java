@@ -41,11 +41,11 @@ public class JDBCExample {
 				System.out.println("----------------------------");
 			}
 
+//			2.EMP 테이블의 모든 데이터를 출력하는 프로그램을 작성해보자.	
 			String sql1 = "select * from emp order by empno";
 
 			ResultSet rs = stmt.executeQuery(sql1);
 
-//			2.EMP 테이블의 모든 데이터를 출력하는 프로그램을 작성해보자.	
 			System.out.println("----------------------------");
 
 			while (rs.next()) {
@@ -60,17 +60,17 @@ public class JDBCExample {
 				System.out.println("----------------------------");
 			}
 //			3.EMP 테이블에서 “SCOTT” 사원의 급여(sal) 정보를 1000으로 바꾸는 프로그램을 작성해보자.
-			String sqlUpdate = "update emp set sal='1000' where ename='SCOTT'";
-			stmt.executeUpdate(sqlUpdate);
+			String sqlUpdate = "update emp set sal=1000 where ename='SCOTT'";
+			int result = stmt.executeUpdate(sqlUpdate);
 
 
 //			4.EMP 테이블에서 “SCOTT” 이름으로 검색한 결과를 출력하는 프로그램을 작성해보자.	
 			String sqlFind = "select * from emp where ename='SCOTT'";
 			ResultSet rss = stmt.executeQuery(sqlFind);
+			
 			System.out.println("---------FIND SCOTT---------");
 			System.out.println("----------------------------");
-
-			while (rss.next()) {
+			if (rss.next()) {
 				System.out.println("사원번호 :" + rss.getInt(1));
 				System.out.println("이름 :" + rss.getString(2));
 				System.out.println("직업 :" + rss.getString(3));
@@ -85,8 +85,8 @@ public class JDBCExample {
 //			5.모든 사원정보를 출력하되 부서정보를 함께 출력하는 프로그램을 작성해보자
 			
 			String sqlAll = "select * from emp e join dept d where e.deptno = d.deptno";
-
 			ResultSet rsa = stmt.executeQuery(sqlAll);
+			
 			System.out.println("-------------P--------------");
 			System.out.println("-------------R--------------");
 			System.out.println("-------------I--------------");

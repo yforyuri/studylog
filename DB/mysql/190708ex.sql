@@ -90,7 +90,7 @@ where sal < (select distinct sal from emp where job='ANALYST') and job !='ANALYS
 -- 49. 부하직원이 없는 사원의 이름을 표시하시오.
 select ename from emp e
 where not exists (select ename from emp m where e.empno=m.mgr);
- 
+
 -- 50. 부하직원이 있는 사원의 이름을 표시하시오.
 select ename from emp e
 where exists (select ename from emp m where e.empno=m.mgr);
