@@ -62,7 +62,8 @@ select c.name
 from customer c, orders o, book b
 where c.custid=o.custid and b.bookid=o.bookid
 and publisher in
-(select publisher from customer c, orders o, book b where name='박지성');
+(select publisher from customer c, orders o, book b where name='박지성') and c.name!='박지성'
+group by c.name;
 
 -- (2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
 select c.name
@@ -83,3 +84,4 @@ delete from book where publisher="이상미디어";
 
 -- (4) 출판사‘대한미디어’가‘대한출판사’로이름을바꾸었다.
 update book set publisher="대한출판사" where publisher="대한미디어";
+
