@@ -5,10 +5,10 @@
 1. 해당 영역(page)에userInfo 이름의 member.UserInfo타입의 객체가 있는지 확인
 2. 있다면 현재 지정되어있는 객체를 반환
 3. 없다면 UserInfo ui = new member.UserInfo(); 새로운 객체를 생성
-3-1. pageCOntext.setAttribute("userInfo", ui); 
+3-1. pageContext.setAttribute("userInfo", ui); 
  -->
 
-<<jsp:setProperty property="name" value="hot" name="userInfo" />
+<jsp:setProperty property="name" value="hot" name="userInfo" />
 
 <!DOCTYPE html>
 <html>

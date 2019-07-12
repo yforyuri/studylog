@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +10,15 @@
 </style>
 </head>
 <body>
-<%
-session = request.getSession(false);
-%>
+	<%
+		session = request.getSession(false);
+	%>
 
-name:<%= session.getAttribute("name") %> <br>
-id:<%= session.getAttribute("id") %> <br>
-isLogin:<%= session.getAttribute("isLogin") %> <br>
-age:<%= session.getAttribute("age") 
-%>   
+	name:<%=session.getAttribute("name")%>
+	<br> id:<%=session.getAttribute("id")%>
+	<br> isLogin:<%=session.getAttribute("isLogin")%>
+	<br> age:<%=session.getAttribute("age")%><br>
+	<%=session.getAttribute("user")%>
+
 </body>
 </html>

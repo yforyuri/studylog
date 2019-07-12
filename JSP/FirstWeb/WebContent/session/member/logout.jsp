@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:useBean id="userData" class="member.UserInfo" scope="request" />
-<!--  request.getAttributr("userData") -->
+    pageEncoding="UTF-8"%>
+ <%
+ // 세션삭
+ 	session.invalidate();
+ %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<style></style>
 </head>
 <body>
-	<h1>포워드 된 페이지. usebean을 통한 데이터 공유</h1>
-	<h1>
-		<%=userData%>
-	</h1>
+<h1>정상적으로 로그아웃 되었습니다.</h1>
+<a href="loginCheck.jsp"> loginCheck</a>
 </body>
 </html>
