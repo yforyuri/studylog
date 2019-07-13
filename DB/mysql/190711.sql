@@ -8,6 +8,8 @@ password varchar(20) not null,
 message text not null
 );
 
-insert into GUESTBOOK_MESSAGE (GUEST_NAME, PASSWORD, MESSAGE) values (?,?,?);
+insert into GUESTBOOK_MESSAGE (guestname, guestname, guestname) values (?,?,?);
 select * from GUESTBOOK_MESSAGE;
 drop table GUESTBOOK_MESSAGE;
+desc GUESTBOOK_MESSAGE;
+delete from GUESTBOOK_MESSAGE;

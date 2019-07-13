@@ -2,7 +2,6 @@ package guestbook.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,6 +14,7 @@ public class GetMessageService {
 	
 	// MessageListView를 생성해서 결과로 반환
 	
+	// singleton
 	private GetMessageService() {}
 	
 	private static GetMessageService service = new GetMessageService();
@@ -23,22 +23,27 @@ public class GetMessageService {
 		return service;
 	}
 	
-	// 1. 한 페이지에 보여줄 게시글의 갯수 
+	/* MessageListView.jsp 에 필요한 변수   
+	 * messageCountPerPage 
+	 * messageTotalCount 
+	 * pageTotalCount 
+	 * curruntPageNumber 
+	 * messageList 
+	 * firstRow
+	 * endRow : mysql x
+	 */
+	
+	// 1. 한 페이지에 보여줄 방명록의 수 
 	private static final int MESSAGE_COUNT_PER_PAGE =3;
-	//page마다 보여주는 게시글이 달라짐. 
-		/* MessageListView에 필요한 것들: 
-		 * messageCountPerPage messageTotalCount 
-		 * pageTotalCount curruntPageNumber 
-		 * messageList 
-		 * firstRow endRow
-		 * @pageNumber : 현재 페이지
-		 * @
-		 * */
+	
 	
 	public MessageListView getMessageListView(int pageNumber) {
-		Connection conn = null;
-		// 2. 현재 페이지 번화
+		
+		
+		// 2. 현재 페이지 번호 
 		int currentPageNumber = pageNumber;
+		
+		Connection conn;
 		
 		MessageListView view = null;
 		
@@ -47,16 +52,18 @@ public class GetMessageService {
 			conn = ConnectionProvider.getConnection();
 			// DAO
 			MessageDao dao = MessageDao.getInstance();
-			//전체 게시물의 갯수
+			//전체 게시물의 수
 			int messageTotalCount = dao.selectCount(conn);
 			
-			// 게시물 내용 리스트, db검색에 사용할 start_row, end_row
+			// 게시물 내용 리스트, db검색에 사용할 startrow, endrow
+			//mysql : endRow불필요 
 			List<Message> messageList = null;
 			int firstRow = 0;
 			
 			if(messageTotalCount > 0) {
 				
-				firstRow = (pageNumber-1) * MESSAGE_COUNT_PER_PAGE + 1;
+				//mysql - MESSAGE_COUNT_PER_PAGE+1 설정 불필요 : auto increment되기 때문 
+				firstRow = (pageNumber-1) * MESSAGE_COUNT_PER_PAGE;
 				messageList = dao.selectList(conn, firstRow, MESSAGE_COUNT_PER_PAGE);
 				
 			}else {

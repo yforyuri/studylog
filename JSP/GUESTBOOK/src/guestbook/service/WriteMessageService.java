@@ -8,16 +8,16 @@ import guestbook.model.Message;
 import jdbc.ConnectionProvider;
 
 public class WriteMessageService {
-	
+	// private: 외부에서 값을 변경할 수 없도록 
 	private static WriteMessageService service = new WriteMessageService();
 	
 	private WriteMessageService() {}
 	
 	public static WriteMessageService getInstance() {
 		return service;
-	}
-	
+	}	
 	//   <--singleton
+	
 	public int write(Message message) {
 		
 		int result = 0;

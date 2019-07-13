@@ -10,7 +10,7 @@ public class MessageListView {
 	private int curruntPageNumber;
 	private List<Message> messageList;
 	private int firstRow;
-	private int endRow;
+//	mysql : endRow 불필요 
 	
 	
 	public MessageListView(int messageCountPerPage, int messageTotalCount, int curruntPageNumber,
@@ -22,7 +22,7 @@ public class MessageListView {
 		this.messageList = messageList;
 		this.firstRow = firstRow;
 		calculatePageTotalCount();
-	}//constructor
+	}
 	
 	
 	private void calculatePageTotalCount() {
@@ -35,7 +35,7 @@ public class MessageListView {
 				pageTotalCount++;
 			}
 		}
-	}//calculatePageTotalCount
+	}
 
 
 	public int getMessageCountPerPage() {

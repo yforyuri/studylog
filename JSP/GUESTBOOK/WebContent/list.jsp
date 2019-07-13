@@ -73,8 +73,8 @@ div {
 	</div>
 	<%
 		}
-		}
-		//페이지 넘버링: [1][2][3] 형식으로 게시판 페이지 보여주기 
+	}
+		//page numbering [1][2][3] 
 		for (int i = 1; i <= viewData.getPageTotalCount(); i++) {
 	%>
 
