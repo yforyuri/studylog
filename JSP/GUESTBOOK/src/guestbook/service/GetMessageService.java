@@ -62,7 +62,7 @@ public class GetMessageService {
 			
 			if(messageTotalCount > 0) {
 				
-				//mysql - MESSAGE_COUNT_PER_PAGE+1 설정 불필요 : auto increment되기 때문 
+				//mysql - sequence(+1) 설정 불필요 : auto increment되기 때문 
 				firstRow = (pageNumber-1) * MESSAGE_COUNT_PER_PAGE;
 				messageList = dao.selectList(conn, firstRow, MESSAGE_COUNT_PER_PAGE);
 				

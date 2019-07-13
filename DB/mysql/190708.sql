@@ -234,19 +234,32 @@ select @rownum:=@rownum+1 as NO, empno, ename, hiredate from emp_hire limit 0,5;
 
 
 -- [ORACLE]
+-- mysql : AUTO INCREMENT
 --------------------------------------------------------------
 -- SEQUENCE : 자동 숫자 증가 처리해주는 객체
 --------------------------------------------------------------
-create sequences test_seq;
-start with 10
-increament by 10;
-drop sequence test_seq;
+-- create sequences test_seq;
+-- start with 10
+-- increament by 10;
+-- drop sequence test_seq;
 
-select test_seq.nextval from dual;
-select test_seq.currval from dual;
+-- select test_seq.nextval from dual;
+-- select test_seq.currval from dual;
 
- desc dept01;
- select * from dept01;
- insert into dept01 values(test_seq.nextval, 'design', 'seoul');
- delete from dept01;
- 
+--  desc dept01;
+--  select * from dept01;
+--  insert into dept01 values(test_seq.nextval, 'design', 'seoul');
+--  delete from dept01;
+
+-- SELECT MAX(BOOKID)+1 FROM BOOK;
+-- SELECT LAST_INSERT_ID()+1 FROM DUAL;
+
+-- 2씩 증가하는 방법 
+--    1. auto_inc 관련된 변수를 보여달라고 명령
+--       -> _increment : 현재 몇단계씩 뛰는지 보여줌
+--         -> _offset : increment를 column key에 명령하면 어디서부터 시작하는지 (예 20이면 20부터 시작)
+--    2. _increment를 변경
+--       -> set @@auto_increment_increment = 2;
+-- 
+show variables like 'auto_inc%';
+set @@auto_increment_increment = 1;
