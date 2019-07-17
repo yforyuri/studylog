@@ -71,6 +71,7 @@
 	학번 : <%= sNum %> <br>
 	리포트 파일 : <%= fileName %> ( <%= fileSize %> ) <br>
 	저장 파일 이름 : <%= saveFileName %> <br>
+	이미지 : <img src="../upload/<%= saveFileName %>">
 	저장 폴더 : <%= dir %>
 
 </h1>
