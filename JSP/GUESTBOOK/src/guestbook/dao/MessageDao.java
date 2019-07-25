@@ -105,7 +105,7 @@ public class MessageDao {
 		return totalCnt;
 	}
 
-	public List<Message> selectList(Connection conn, int firstRow, int endRow) {
+	public List<Message> selectList(Connection conn, int firstRow, int messageCountPerPage) {
 		
 		List<Message> list = new ArrayList<Message>();
 		
@@ -117,7 +117,7 @@ public class MessageDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, firstRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setInt(2, messageCountPerPage);
 			
 			rs = pstmt.executeQuery();
 			
