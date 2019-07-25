@@ -22,7 +22,7 @@ import service.GreetingService;
 import service.OtherService;
 import service.Service;
 
-public class FrontController extends HttpServlet {
+public class FrontController2 extends HttpServlet {
 	
 	Map<String, Service> commands = new HashMap<String, Service>();
 	
@@ -57,6 +57,7 @@ public class FrontController extends HttpServlet {
 		while(keyItr.hasNext()) {
 			String command = (String) keyItr.next();
 			String serviceClassName = prop.getProperty(command);
+			System.out.println(command + " : " + serviceClassName);
 			
 			try {
 				Class serviceClass = Class.forName(serviceClassName);
@@ -71,7 +72,7 @@ public class FrontController extends HttpServlet {
 	}
 
 
-	public FrontController() {
+	public FrontController2() {
 		// /, /greeting, /now/date 
 		/*
 		 * commands.put("/", new GreetingService()); commands.put("/greeting", new

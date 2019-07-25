@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class SImpleController
  */
 @WebServlet("/simple")
-public class SimpleController extends HttpServlet implements Servlet{
+public class SimpleController extends HttpServlet {
 	
-	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = 1L;
     
 
 	/**
