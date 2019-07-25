@@ -7,49 +7,54 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <link href="../css/default.css" rel="stylesheet" type="text/css">
+<style>
+</style>
 </head>
 <body>
 	<%
 		request.setCharacterEncoding("utf-8");
-
-		String userId = request.getParameter("uId");
-		String userPw = request.getParameter("uPW");
-		String userName = request.getParameter("uName");
+	
+	String userId = request.getParameter("uId");
+	String userPw = request.getParameter("uPw");
+	String userName = request.getParameter("uName");
 	%>
-	<!-- 헤더 -->
+
+	<!-- 해더 시작 -->
 	<%@ include file="../frame/header.jsp"%>
-	<!-- 네비 -->
+
+	<!-- 네비게이션 시작 -->
 	<%@ include file="../frame/nav.jsp"%>
-	<!-- 컨텐츠 -->
-	<div id="con">
-		<h1>회원가입 요청 처리페이지</h1>
+
+	<!-- 컨텐츠 시작 -->
+	<div id="contents">
+		<h3>회원가입 페이지</h3>
 		<hr>
-
 		<table>
-			<tr>
-				<td>아이디(이메일)</td>
-				<td><input type="email" name="uId" vlaue="<%=userId%>"></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="uPw" vlaue="<%=userPw%>"></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="uName" vlaue="<%=userName%>"></td>
-			</tr>
-			<tr>
-				<td>사진</td>
-				<td><input type="file" name="uPhoto"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
+		<tr>
+		<td>아이디(이메일)</td>
+		<td><input type="email" name="uId" value="<%= userId %>"></td>
+		</tr>
+		<tr>
+		<td>비밀번호</td>
+		<td><input type="password" name="uPw" value="<%= userPw %>"></td>
+		</tr>
+		<tr>
+		<td>이름</td>
+		<td><input type="text" name="uName" value="<%= userName %>"></td>
+		</tr>
+		<tr>
+		<td>사진</td>
+		<td><input type="file" name="uPhoto"></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td></td>
+		</tr>
 		</table>
-
 	</div>
-	<!-- 푸터 -->
+
+	<!-- 푸터 시작 -->
 	<%@ include file="../frame/footer.jsp"%>
+
 </body>
 </html>
