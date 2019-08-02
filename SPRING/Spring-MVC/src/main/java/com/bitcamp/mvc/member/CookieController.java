@@ -47,9 +47,9 @@ public class CookieController {
 			HttpServletRequest request,
 			Model model
 			) {
+		
 //		model.addAttribute("cName", "nickname");
 //		model.addAttribute("cValue", cValue);
-		
 		
 		Cookie[] cookies = request.getCookies();
 		
