@@ -16,13 +16,6 @@ div {
 </style>
 </head>
 <body>
-<%-- <h3>
-${viewData.messageTotalCount} <br>
-${viewData.curruntPageNumber} <br>
-${viewData.pageTotalCount} <br>
-${viewData.messageCountPerPage} <br>
-${viewData.firstRow} <br>
-</h3> --%>
 
 <h1>방명록</h1>
 
@@ -33,7 +26,7 @@ ${viewData.firstRow} <br>
 		메세지 번호 : ${message.id}<br> 
 		작성자 : ${message.guestname}<br> 
 		메세지 : ${message.message}<br> 
-		<a href="guestDelForm?messageId=${message.id}">삭제하기</a>
+		<a href="delete?messageId=${message.id}">삭제하기</a>
 </div>
 </c:forEach>
 
