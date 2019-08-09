@@ -33,7 +33,8 @@ public class MemberListController {
 		
 		// service
 		ListViewData listdata = listService.getListData(pageNumber, searchParam);
-		System.out.println("number of member : "+ listdata.getTotalCount());
+		
+//		System.out.println("number of member : "+ listdata.getTotalCount());
 		
 //		for(MemberInfo m : listdata.getMemberList()) { System.out.println(m); }
 

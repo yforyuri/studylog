@@ -127,13 +127,13 @@ public class MemberDao {
 		if (searchParam != null) {
 			sql = "select count(*) from member where ";
 			if (searchParam.getStype().equals("both")) {
-				sql += " uid like '%"+searchParam.getKeyword()+"%' or uname like '%"+searchParam.getKeyword()+"%'";
+				sql += " id like '%"+searchParam.getKeyword()+"%' or name like '%"+searchParam.getKeyword()+"%'";
 			}
 			if (searchParam.getStype().equals("id")) {
-				sql += " uid like '%"+searchParam.getKeyword()+"%'";
+				sql += " id like '%"+searchParam.getKeyword()+"%'";
 			}
 			if (searchParam.getStype().equals("name")) {
-				sql += "uname like '%"+searchParam.getKeyword()+"%'";
+				sql += "name like '%"+searchParam.getKeyword()+"%'";
 			}
 		}
 
@@ -184,7 +184,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM member where uid like ?  limit ?, ?";
+		String sql = "SELECT * FROM member where id like ?  limit ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -216,7 +216,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM member where uname like ?  limit ?, ?";
+		String sql = "SELECT * FROM member where name like ?  limit ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -248,7 +248,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM member where id like ? or  uname like ?  limit ?, ?";
+		String sql = "SELECT * FROM member where id like ? or  name like ?  limit ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -300,7 +300,6 @@ public class MemberDao {
 					new Date(rs.getTimestamp("regdate").getTime()));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(rs);
@@ -310,25 +309,47 @@ public class MemberDao {
 		
 		return memberInfo;
 	}
-//
-//	
-//	public int deleteMember(Connection conn, int idx) throws SQLException {
-//		//preparedStatement 객체 생성
-//		int resultCnt = 0;
-//		
-//		PreparedStatement pstmt = null;
-//		
-//		String sql = "delete from member where idx=?";
-//		
-//		try{
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1,  idx);
-//			
-//			resultCnt = pstmt.executeUpdate();
-//			
-//		}finally {
-//			JdbcUtil.close(pstmt);
-//		}
-//		return resultCnt;
-//	}
+
+	
+	public int deleteMember(Connection conn, int id) {
+
+		int rCnt = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete from member where idx=?";
+		
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,  id);
+			
+			rCnt = pstmt.executeUpdate();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rCnt;
+	}
+	
+	public int editMember(Connection conn, MemberInfo memberInfo) {
+		
+		int rCnt = 0;
+		
+		PreparedStatement pstmt = null;
+	
+		String sql = "update member set name=?, pw=?, photo=? where idx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberInfo.getName());
+			pstmt.setString(2, memberInfo.getPw());
+			pstmt.setString(3, memberInfo.getPhoto());
+			pstmt.setInt(4, memberInfo.getIdx());
+			
+			rCnt = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rCnt;
+	}
 }
