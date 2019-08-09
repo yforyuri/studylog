@@ -5,13 +5,11 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.guest.dao.MessageDao;
+import com.bitcamp.guest.dao.MessageJdbcTemplateDao;
 import com.bitcamp.guest.domain.Message;
 import com.bitcamp.guest.domain.MessageListView;
 import com.bitcamp.guest.jdbc.ConnectionProvider;
@@ -19,8 +17,10 @@ import com.bitcamp.guest.jdbc.ConnectionProvider;
 @Service("listService")
 public class GetMessageService implements GuestBookService{
 	
+	/* 기존방식 -->
 	@Autowired
 	private MessageDao dao;
+
 	
 	// MessageListView를 생성해서 결과로 반환
 	
@@ -41,7 +41,7 @@ public class GetMessageService implements GuestBookService{
 	 * messageList 
 	 * firstRow
 	 * endRow : mysql x
-	 */
+	 
 	
 	// 1. 한 페이지에 보여줄 방명록의 수 
 	private static final int MESSAGE_COUNT_PER_PAGE =3;
@@ -86,7 +86,43 @@ public class GetMessageService implements GuestBookService{
 			e.printStackTrace();
 		}
 		return view;
-	}
+	}   <--- 기존방식  */
+	
+	
+//	JDBC template
+	
+	@Autowired
+	private MessageJdbcTemplateDao dao;
+	
+	private static final int MESSAGE_COUNT_PER_PAGE = 3;
 
+	
+	public MessageListView getMessageListView(int pageNumber) {
+		
+		int currentPageNumber = pageNumber;
+		
+		MessageListView view = null;
+		
+		int messageTotalCount = dao.selectCount();
+		
+		List<Message> messageList = null;
+		
+		int firstRow = 0;
+		
+		if(messageTotalCount > 0) {
+			
+			firstRow = (pageNumber - 1) * MESSAGE_COUNT_PER_PAGE ;
+			
+			messageList = dao.selectList(firstRow, MESSAGE_COUNT_PER_PAGE);
+		
+		} else {
+			currentPageNumber = 0;
+			messageList = Collections.emptyList();
+		}
+		
+		view = new MessageListView(MESSAGE_COUNT_PER_PAGE, messageTotalCount, currentPageNumber, messageList, firstRow);
+		
+		return view;
+	}
 
 }
