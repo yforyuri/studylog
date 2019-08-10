@@ -1,4 +1,4 @@
-package com.bitcamp.guest;
+package com.bitcamp.guest.controller;
 
 import java.sql.SQLException;
 

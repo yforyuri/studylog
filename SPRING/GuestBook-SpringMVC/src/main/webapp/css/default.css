@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+	color: black;
+}
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+#contents {
+position: absolute; 
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%, -50%);
+}
+#msgbox {
+	border: 3px dotted white;
+	border-radius: 10px;
+	margin: 10px 0px;
+	width: 500px;
+	background-color: #9EE8BB;
+	padding:10px;
+}
+#wbox{
+	border: 3px dashed #9EE8BB;
+	border-radius: 10px;
+	margin: 10px 0px;
+	width: 500px;
+	padding:10px;	
+}
+#dbox{
+	border: 3px dashed #9EE8BB;
+	border-radius: 10px;
+	margin: 10px 0px;
+	width: 500px;
+	padding:10px;		
+}
