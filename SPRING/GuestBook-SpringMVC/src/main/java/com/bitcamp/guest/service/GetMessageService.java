@@ -3,19 +3,120 @@ package com.bitcamp.guest.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.guest.dao.MessageDao;
 import com.bitcamp.guest.dao.MessageJdbcTemplateDao;
+import com.bitcamp.guest.dao.MessageSessionDao;
+import com.bitcamp.guest.dao.MessageSessionTemplateDao;
 import com.bitcamp.guest.domain.Message;
 import com.bitcamp.guest.domain.MessageListView;
 import com.bitcamp.guest.jdbc.ConnectionProvider;
 
 @Service("listService")
 public class GetMessageService implements GuestBookService{
+
+//	Session Template
+	
+//	@Autowired
+//	private MessageSessionTemplateDao dao;
+	
+	@Autowired
+	private SqlSessionTemplate template;
+	
+	private MessageSessionDao dao;
+	
+	
+	private static final int MESSAGE_COUNT_PER_PAGE = 3;
+
+	
+	public MessageListView getMessageListView(int pageNumber) {
+		
+		//dao생성 
+		dao = template.getMapper(MessageSessionDao.class);
+		
+		int currentPageNumber = pageNumber;
+		
+		MessageListView view = null;
+		
+		int messageTotalCount = dao.selectCount();
+		
+		List<Message> messageList = null;
+		
+		int firstRow = 0;
+		
+		if(messageTotalCount > 0) {
+			
+			firstRow = (pageNumber - 1) * MESSAGE_COUNT_PER_PAGE ;
+			
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			params.put("firstRow", firstRow);
+			params.put("MESSAGE_COUNT_PER_PAGE", MESSAGE_COUNT_PER_PAGE);
+			
+			messageList =dao.selectList(params);
+		
+		} else {
+			currentPageNumber = 0;
+			messageList = Collections.emptyList();
+		}
+		
+		view = new MessageListView(MESSAGE_COUNT_PER_PAGE, messageTotalCount, currentPageNumber, messageList, firstRow);
+		
+		return view;
+	}
+	
+	
+	
+	
+	
+	
+/*	JDBC template
+ * ----------------------------------------------------------------------------
+	@Autowired
+	private MessageJdbcTemplateDao dao;
+	
+	private static final int MESSAGE_COUNT_PER_PAGE = 3;
+
+	
+	public MessageListView getMessageListView(int pageNumber) {
+		
+		int currentPageNumber = pageNumber;
+		
+		MessageListView view = null;
+		
+		int messageTotalCount = dao.selectCount();
+		
+		List<Message> messageList = null;
+		
+		int firstRow = 0;
+		
+		if(messageTotalCount > 0) {
+			
+			firstRow = (pageNumber - 1) * MESSAGE_COUNT_PER_PAGE ;
+			
+			messageList = dao.selectList(firstRow, MESSAGE_COUNT_PER_PAGE);
+		
+		} else {
+			currentPageNumber = 0;
+			messageList = Collections.emptyList();
+		}
+		
+		view = new MessageListView(MESSAGE_COUNT_PER_PAGE, messageTotalCount, currentPageNumber, messageList, firstRow);
+		
+		return view;
+	}   
+	-----------------------------------------------------------------------------
+	JDBC template  */
+	
+	
+	
+	
 	
 	/* 기존방식 -->
 	@Autowired
@@ -87,42 +188,5 @@ public class GetMessageService implements GuestBookService{
 		}
 		return view;
 	}   <--- 기존방식  */
-	
-	
-//	JDBC template
-	
-	@Autowired
-	private MessageJdbcTemplateDao dao;
-	
-	private static final int MESSAGE_COUNT_PER_PAGE = 3;
-
-	
-	public MessageListView getMessageListView(int pageNumber) {
-		
-		int currentPageNumber = pageNumber;
-		
-		MessageListView view = null;
-		
-		int messageTotalCount = dao.selectCount();
-		
-		List<Message> messageList = null;
-		
-		int firstRow = 0;
-		
-		if(messageTotalCount > 0) {
-			
-			firstRow = (pageNumber - 1) * MESSAGE_COUNT_PER_PAGE ;
-			
-			messageList = dao.selectList(firstRow, MESSAGE_COUNT_PER_PAGE);
-		
-		} else {
-			currentPageNumber = 0;
-			messageList = Collections.emptyList();
-		}
-		
-		view = new MessageListView(MESSAGE_COUNT_PER_PAGE, messageTotalCount, currentPageNumber, messageList, firstRow);
-		
-		return view;
-	}
 
 }

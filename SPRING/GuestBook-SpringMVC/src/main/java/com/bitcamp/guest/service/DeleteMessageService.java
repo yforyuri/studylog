@@ -3,16 +3,115 @@ package com.bitcamp.guest.service;
 
 import java.sql.SQLException;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bitcamp.guest.dao.MessageJdbcTemplateDao;
+import com.bitcamp.guest.dao.MessageSessionDao;
+import com.bitcamp.guest.dao.MessageSessionTemplateDao;
 import com.bitcamp.guest.domain.Message;
 import com.bitcamp.guest.exception.InvalidMessagePasswordException;
 import com.bitcamp.guest.exception.MessageNotFoundException;
 
-@Service
+@Service("deleteService")
 public class DeleteMessageService implements GuestBookService {
+	
+//	Session Template
+	
+	@Autowired
+	private SqlSessionTemplate template;
+	
+	private MessageSessionDao dao;
+	
+
+	@Transactional
+	public int deleteMessage(int messageId, String password) throws SQLException, MessageNotFoundException, InvalidMessagePasswordException {
+			int result = 0;
+			
+			// dao 생성
+			dao = template.getMapper(MessageSessionDao.class);
+			
+			try {
+				
+				Message message = dao.select(messageId);
+				
+				if(message == null ) {
+					throw new MessageNotFoundException("메세지가 존재하지 않음 : " + messageId);
+				
+				} else {
+				
+					if(!message.hasPassword()) {
+						throw new InvalidMessagePasswordException("비밀번호가 일치하지 않습니다.");
+					} 
+					
+					if(!message.matchPassword(password)){
+						throw new InvalidMessagePasswordException("비밀번호가 일치하지 않습니다.");
+					}
+
+					result= dao.deleteMessage(messageId);
+				
+				}
+
+			} catch (MessageNotFoundException e) {
+				e.printStackTrace();
+				throw e;
+			} catch (InvalidMessagePasswordException e) {
+				e.printStackTrace();
+				throw e;
+			}
+			
+			return result;
+	}
+	
+/*  ----------------------------------------------------
+ * JDBC template	
+	@Autowired
+	private MessageJdbcTemplateDao dao;
+
+	public int deleteMessage(int messageId, String password) throws SQLException, MessageNotFoundException, InvalidMessagePasswordException {
+			int result = 0;
+			
+			try {
+				
+				Message message = dao.select(messageId);
+				
+				
+				
+				if(message == null ) {
+					throw new MessageNotFoundException("메세지가 존재하지 않음 : " + messageId);
+				
+				} else {
+				
+					if(!message.hasPassword()) {
+						throw new InvalidMessagePasswordException("비밀번호가 일치하지 않습니다.");
+					} 
+					
+					if(!message.matchPassword(password)){
+						throw new InvalidMessagePasswordException("비밀번호가 일치하지 않습니다.");
+					}
+
+					result= dao.deleteMessage(messageId);
+				
+				}
+
+			} catch (MessageNotFoundException e) {
+				e.printStackTrace();
+				throw e;
+			} catch (InvalidMessagePasswordException e) {
+				e.printStackTrace();
+				throw e;
+			}
+			
+			return result;
+	}
+	JDBC template
+	------------------------------------------------------------------------- */
+	
+	
+	
+	
 
 /*	기존방식 -->
 	@Autowired
@@ -74,49 +173,5 @@ public class DeleteMessageService implements GuestBookService {
 
 	}
 	<--- 기존방식   */
-	
-	
-	
-//	JDBC template
-	
-	@Autowired
-	private MessageJdbcTemplateDao dao;
-
-	public int deleteMessage(int messageId, String password) throws SQLException, MessageNotFoundException, InvalidMessagePasswordException {
-			int result = 0;
-			
-			try {
-				
-				Message message = dao.select(messageId);
-				
-				
-				
-				if(message == null ) {
-					throw new MessageNotFoundException("메세지가 존재하지 않음 : " + messageId);
-				
-				} else {
-				
-					if(!message.hasPassword()) {
-						throw new InvalidMessagePasswordException("비밀번호가 일치하지 않습니다.");
-					} 
-					
-					if(!message.matchPassword(password)){
-						throw new InvalidMessagePasswordException("비밀번호가 일치하지 않습니다.");
-					}
-
-					result= dao.deleteMessage(messageId);
-				
-				}
-
-			} catch (MessageNotFoundException e) {
-				e.printStackTrace();
-				throw e;
-			} catch (InvalidMessagePasswordException e) {
-				e.printStackTrace();
-				throw e;
-			}
-			
-			return result;
-	}
 
 }

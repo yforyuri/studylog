@@ -43,14 +43,27 @@
 		class="org.springframework.jdbc.core.JdbcTemplate"
 		p:dataSource-ref="dataSource" />
 
+	<!-- Mybatis 설정 : datasource, mapper 경로 -->
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="configLocation" value="" />
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="mapperLocations" value="classpath:com/bitcamp/guest/mapper/mybatis/*.xml" />
+	</beans:bean>
+
+	<beans:bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg index="0"
+			ref="sqlSessionFactory" />
+	</beans:bean>
 	<!-- PlatformTransactionManager 빈 설정 -->
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource">
 	</beans:bean>
-	
-	<!-- @Transactional 애노테이션 활성화 설정 --> 
-	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- @Transactional 애노테이션 활성화 설정 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
 
 	<context:component-scan
 		base-package="com.bitcamp.guest" />

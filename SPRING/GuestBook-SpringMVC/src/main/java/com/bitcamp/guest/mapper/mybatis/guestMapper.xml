@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namepsace 는 필수 속성이다. : dao 식별하기위한 이름 -->
+<mapper namespace="com.bitcamp.guest.mapper.mybatis.guestMapper">
+
+<!-- DB컬럼명과 message객체의 변수명 맞춰주기 -->
+	<resultMap id="messageResultmap" type="com.bitcamp.guest.domain.Message">
+		<result property="id" column="message_id" />
+		<result property="guestname" column="guestname" />
+		<result property="password" column="password"/>
+		<result property="message" column="message"/>
+	</resultMap>
+
+	<insert id="insert" parameterType = "com.bitcamp.guest.domain.Message">
+		insert into GUESTBOOK_MESSAGE (guestname, password, message) values (#{guestname}, #{password}, #{message}) 
+	</insert>
+	
+	<select id="selectCount" resultType="int">
+	select count(*) from guestbook_message
+	</select>
+
+	<select id="selectList" resultType = "com.bitcamp.guest.domain.Message">
+		select * from GUESTBOOK_MESSAGE order by message_id desc limit #{firstrow}, #{messageCountPerPage} 
+	</select>
+	
+	<select id="select" resultType = "com.bitcamp.guest.domain.Message">
+		select * from GUESTBOOK_MESSAGE where message_id = #{messageId}
+	</select>
+
+	<delete id="deleteMessage">
+		delete from  GUESTBOOK_MESSAGE where message_id=#{messageId}
+	</delete>
+
+</mapper> 
+
+<!-- <![CDATA[ 안에 묶어주면 <> 관련한 오류메세지가 나타나지않음  ]]> -->

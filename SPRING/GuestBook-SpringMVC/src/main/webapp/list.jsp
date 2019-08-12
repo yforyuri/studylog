@@ -10,6 +10,7 @@
 <link href="<c:url value="/css/default.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
+<!-- to make single page using JSON/ajax --> 
 <div id="contents">
 	<H1>GUESTBOOK</H1>
 
