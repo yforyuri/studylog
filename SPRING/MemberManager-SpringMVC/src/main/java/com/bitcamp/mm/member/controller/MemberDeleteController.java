@@ -5,11 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bitcamp.mm.member.dao.MemberJdbcTemplateDao;
 import com.bitcamp.mm.member.service.MemberDeleteService;
 
 @Controller
 public class MemberDeleteController {
 	
+	@Autowired
+	private MemberJdbcTemplateDao dao;
+
+	public int memberDelete(int id) {
+		return dao.deleteMember(id);
+	}
+	
+	/*  이전방식 
 	@Autowired
 	private MemberDeleteService deleteService;
 	
@@ -22,5 +31,6 @@ public class MemberDeleteController {
 		
 		return "redirect:/member/memberList";
 	}
-
+	
+	이전방식   */
 }
