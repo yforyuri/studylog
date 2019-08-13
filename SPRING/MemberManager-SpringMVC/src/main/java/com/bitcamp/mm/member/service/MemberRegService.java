@@ -2,15 +2,12 @@ package com.bitcamp.mm.member.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.mm.jdbc.ConnectionProvider;
 import com.bitcamp.mm.member.dao.MemberJdbcTemplateDao;
 import com.bitcamp.mm.member.domain.MemberInfo;
 import com.bitcamp.mm.member.domain.RequestMemberRegist;
@@ -46,14 +43,12 @@ public class MemberRegService implements MemberService {
 			resultCnt = dao.insert(memberInfo);
 
 		} catch (IllegalStateException e) {
-
 			e.printStackTrace();
 		} catch (IOException e) {
-
 			e.printStackTrace();
-		} catch (Exception e) {
-			System.out.println("오류");
-			new File(dir, newFileName).delete();
+//		} catch (Exception e) {
+//			System.out.println("오류");
+//			new File(dir, newFileName).delete();
 		}
 
 		return resultCnt;

@@ -41,13 +41,13 @@ public class RequestMemberRegist {
 		this.photo = photo;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "RequestMemberRegist [id=" + id + ", pw=" + pw + ", name=" + name + ", photo=" + photo.getOriginalFilename() + "]";
-//	}
+	@Override
+	public String toString() {
+		return "RequestMemberRegist [id=" + id + ", pw=" + pw + ", name=" + name + ", photo=" + photo.getOriginalFilename() + "]";
+	}
 	
 	public MemberInfo toMemberInfo() {
-		
+
 		MemberInfo info = new MemberInfo();
 		info.setId(id);
 		info.setName(name);
@@ -56,4 +56,5 @@ public class RequestMemberRegist {
 		return info;
 		
 	}
+		
 }

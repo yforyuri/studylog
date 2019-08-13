@@ -24,30 +24,23 @@
 		<table>
 			<tr>
 				<td>아이디(이메일)</td>
-				<td>
-				<input type="hidden" name="idx" value="${editData.idx}">
-				<input type="checkbox" id="idcheck">
-				<input type="email" id="id" name="id" readonly value="${editData.id}"> id는 수정 불가합니다. <span id="idcheckmsg"></span> </td>
-				
+				<td><input type="email" id="id" name="id" required ><input type="checkbox" id="idcheck"><span id="idcheckmsg"></span> </td>	
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="pw" required> </td>
+				<td><input type="password" name="pw" required></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="name" required  value="${editData.name}"> </td>
+				<td><input type="text" name="name" required></td>
 			</tr>
 			<tr>
 				<td>사진</td>
-				<td>저장된 파일 :  ${editData.photo} [삭제는 aJax로 삭제 처리]<br>
-					<input type="hidden" name="oldFile" value="${editData.photo}" readonly> name="oldFile" 신규 파일이 없다면 이전 파일 이름을 저장합니다.<br>
-					<input type="file" name="photo"> 신규 파일을 업로드하면 기존 파일을 덮어씁니다.
-				</td>
+				<td><input type="file" name="photo"></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="회원가입"> </td>
+				<td><input type="submit" value="회원가입"></td>
 			</tr>
 		</table>
 	</form>
@@ -55,16 +48,16 @@
 
 <%@ include file="/WEB-INF/views/frame/footer.jsp" %>
 
-<script>
-	/* 
+<!-- <script>
+	
 	$(document).ready(function(){
 		
-		$('#uId').focusout(function(){
+		$('#id').focusout(function(){
 			
 			// aJax 비동기 통신 id 전송 사용 유무에 대한 결과 값을 반환
 			
 			$.ajax({
-				url: 'idCheck.do',
+				url: 'idCheck1',
 				type: 'get',
 				data: {id: $(this).val() },
 				success: function(data){
@@ -86,22 +79,10 @@
 					
 				}
 			});
-			
-			$('#regform').submit(function(){
-				
-				if(!$('#idcheck').prop('checked')){
-					alert('아이디 중복확인이 필요합니다.');
-					return false;
-				}
-				
-				
-			});
-			
-		});		
+
+		});	
 		
 	});
- */
-</script>
-
+</script> -->
 </body>
 </html> 

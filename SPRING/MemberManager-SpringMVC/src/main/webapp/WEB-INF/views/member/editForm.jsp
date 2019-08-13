@@ -66,53 +66,5 @@
  
 <%@ include file="/WEB-INF/views/frame/footer.jsp" %>
 
-<script>
-	
-	$(document).ready(function(){
-		
-		$('#id').focusout(function(){
-			
-			// aJax 비동기 통신 id 전송 사용 유무에 대한 결과 값을 반환
-			
-			$.ajax({
-				url: 'idCheck2',
-				type: 'get',
-				data: {id: $(this).val() },
-				success: function(data){
-					alert(data);
-					
-					$('#idcheckmsg').html('');
-					$('#idcheckmsg').removeClass('color_red');
-					$('#idcheckmsg').removeClass('color_blue');
-					
-					if(data == 'Y'){
-						$('#idcheck').prop('checked', true);
-						$('#idcheckmsg').html('사용가능한 멋진 아이디 입니다.');
-						$('#idcheckmsg').addClass('color_blue');
-					} else {
-						$('#idcheck').prop('checked', false);
-						$('#idcheckmsg').html('사용중인 아이디 이거나 탈퇴한 아이디 입니다.');
-						$('#idcheckmsg').addClass('color_red');
-					}
-					
-				}
-			});
-			
-			$('#regform').submit(function(){
-				
-				if(!$('#idcheck').prop('checked')){
-					alert('아이디 중복확인이 필요합니다.');
-					return false;
-				}				
-				
-			});
-
-			
-		});		
-		
-	});
-</script>
-
-
 </body>
 </html>
