@@ -12,12 +12,18 @@ import com.bitcamp.mm.member.service.MemberDeleteService;
 public class MemberDeleteController {
 	
 	@Autowired
-	private MemberJdbcTemplateDao dao;
+	private MemberDeleteService deleteService;
 
-	public int memberDelete(int id) {
-		return dao.deleteMember(id);
+	@RequestMapping("/member/memberDelete")
+	public String delete(
+			@RequestParam("memberId") int id
+			) {
+		
+		deleteService.deleteMember(id);
+		
+		return "redirect:/member/memberList";
 	}
-	
+
 	/*  이전방식 
 	@Autowired
 	private MemberDeleteService deleteService;

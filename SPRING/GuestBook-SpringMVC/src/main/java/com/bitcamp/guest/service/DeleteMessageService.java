@@ -65,8 +65,8 @@ public class DeleteMessageService implements GuestBookService {
 			return result;
 	}
 	
-/*  ----------------------------------------------------
- * JDBC template	
+/* JDBC template 
+ * ----------------------------------------------------
 	@Autowired
 	private MessageJdbcTemplateDao dao;
 
@@ -106,8 +106,8 @@ public class DeleteMessageService implements GuestBookService {
 			
 			return result;
 	}
-	JDBC template
-	------------------------------------------------------------------------- */
+	------------------------------------------------------------------------- 
+	JDBC template                   */
 	
 	
 	

@@ -7,14 +7,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- namepsace 는 필수 속성이다. : dao 식별하기위한 이름 -->
 <mapper namespace="com.bitcamp.guest.dao.MessageSessionDao">
 
-<!-- DB컬럼명과 message객체의 변수명 맞춰주기 -->
-	<resultMap id="messageResultmap" type="com.bitcamp.guest.domain.Message">
-		<result property="id" column="message_id" />
-		<result property="guestname" column="guestname" />
-		<result property="password" column="password"/>
-		<result property="message" column="message"/>
-	</resultMap>
-
 	<insert id="insert" parameterType = "com.bitcamp.guest.domain.Message">
 		insert into GUESTBOOK_MESSAGE (guestname, password, message) values (#{guestname}, #{password}, #{message}) 
 	</insert>
@@ -22,6 +14,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCount" resultType="int">
 	select count(*) from guestbook_message
 	</select>
+	
+	<!-- DB컬럼명과 message 객체의 변수명 맞추기 -->
+	<resultMap id="messageResultmap" type="com.bitcamp.guest.domain.Message">
+		<result property="id" column="message_id" />
+		<result property="guestname" column="guestname" />
+		<result property="password" column="password"/>
+		<result property="message" column="message"/>
+	</resultMap>
 
 	<select id="selectList" parameterType="hashmap" resultMap = "messageResultmap">
 		select * from GUESTBOOK_MESSAGE order by message_id desc limit #{firstRow}, #{MESSAGE_COUNT_PER_PAGE} 

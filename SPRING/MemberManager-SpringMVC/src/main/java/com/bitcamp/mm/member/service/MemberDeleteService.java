@@ -1,17 +1,23 @@
 package com.bitcamp.mm.member.service;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.mm.jdbc.ConnectionProvider;
-import com.bitcamp.mm.member.dao.MemberDao;
+import com.bitcamp.mm.member.dao.MemberJdbcTemplateDao;
 
 @Service("deleteService")
 public class MemberDeleteService implements MemberService {
+
+	@Autowired
+	private MemberJdbcTemplateDao dao;
 	
+	public int deleteMember(int id) {
+		
+		return dao.deleteMember(id);		
+	}
+	
+	/* 이전방식  
+	 * -------------------------------
 	@Autowired
 	private MemberDao dao;
 	
@@ -30,5 +36,7 @@ public class MemberDeleteService implements MemberService {
 		
 		return rCnt;		
 	}
+	-------------------------------
+	이전방식 */
 
 }

@@ -38,7 +38,7 @@
 				<td>
 				<input type="hidden" name="idx" value="${editData.idx}">
 				<input type="checkbox" id="idcheck">
-				<input type="email" id="id" name="id" required value="${editData.uId}"> <span id="idcheckmsg"></span> </td>
+				<input type="email" id="id" name="id" required value="${editData.id}"> <span id="idcheckmsg"></span> </td>
 				
 			</tr>
 			<tr>
