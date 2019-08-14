@@ -8,8 +8,8 @@
 </head>
 <body>
 	<form method="post">
-		이름 <input type="text"><br>
-		나이 <input type="text"><br>
+		이름 <input type="text" name="name"><br>
+		나이 <input type="text" name="age"><br>
 		<input type="submit" value="제출">
 	</form>
 </body>
