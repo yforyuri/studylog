@@ -40,6 +40,7 @@ a, a:visited{
 		<li><a href="<c:url value="/fileupload/uploadForm" />">/fileupload/uploadForm</a></li>
 		<li><a href="<c:url value="/mail/send" />">/send mail</a></li>
 		<li><a href="<c:url value="/mail/send2" />">/send mail2</a></li>
+		<li><a href="<c:url value="/mail/send3" />">/send mail3</a></li>
 	</ul>
 </body>
 </html>
