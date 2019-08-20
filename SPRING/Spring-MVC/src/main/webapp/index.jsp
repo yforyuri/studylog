@@ -38,6 +38,8 @@ a, a:visited{
 		<li><a href="<c:url value="/header/getHeader" />">/header/getHeader</a></li>
 		<li><a href="<c:url value="/search/search" />">/search/search</a></li>
 		<li><a href="<c:url value="/fileupload/uploadForm" />">/fileupload/uploadForm</a></li>
+		<li><a href="<c:url value="/mail/send" />">/send mail</a></li>
+		<li><a href="<c:url value="/mail/send2" />">/send mail2</a></li>
 	</ul>
 </body>
 </html>
