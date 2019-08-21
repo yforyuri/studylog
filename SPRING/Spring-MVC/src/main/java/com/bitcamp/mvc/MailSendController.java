@@ -80,7 +80,7 @@ public class MailSendController {
 	
 	@ResponseBody
 	@RequestMapping("/mail/send3")
-	public String sendFileAttach() throws UnsupportedEncodingException {
+	public String sendFileAttach(){
 		
 		MimeMessage message = javaMailSender.createMimeMessage();
 		
@@ -105,6 +105,9 @@ public class MailSendController {
 			
 		} catch (MessagingException e) {
 		
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+
 			e.printStackTrace();
 		}
 				
