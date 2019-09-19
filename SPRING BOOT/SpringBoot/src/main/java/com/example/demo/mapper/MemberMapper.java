@@ -10,5 +10,6 @@ public interface MemberMapper {
 
 	@Select("select * from member order by idx desc")
 	public List<MemberInfo> selectAll();
+	
 	public MemberInfo selectMemberById(String id);
 }

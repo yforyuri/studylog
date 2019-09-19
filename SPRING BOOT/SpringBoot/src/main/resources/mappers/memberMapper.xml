@@ -24,9 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원로그인 -->
 	<select id="selectMemberById" resultMap="resultMemberInfo">
-	
-		select * from member where uid=#{id}
-		
+		select * from member where id=#{id}
 	</select>
 
 </mapper>
